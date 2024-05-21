@@ -1,0 +1,30 @@
+﻿  jhlabs.cpp
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(17): error C2146: Syntaxfehler: Fehlendes ';' vor Bezeichner 'com'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(17): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(17): error C2143: Syntaxfehler: Es fehlt ';' vor '.'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(17): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(19): error C2146: Syntaxfehler: Fehlendes ';' vor Bezeichner 'java'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(19): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(19): error C2143: Syntaxfehler: Es fehlt ';' vor '.'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(19): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(20): error C2146: Syntaxfehler: Fehlendes ';' vor Bezeichner 'java'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(20): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(20): error C2086: 'int import': Neudefinition
+          f:\src\jhlabs\jhlabs\image\convolvefilter.h(19): Siehe Deklaration von 'import'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(20): error C2143: Syntaxfehler: Es fehlt ';' vor '.'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(20): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(20): error C2086: 'int java': Neudefinition
+          f:\src\jhlabs\jhlabs\image\convolvefilter.h(19): Siehe Deklaration von 'java'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(21): error C2146: Syntaxfehler: Fehlendes ';' vor Bezeichner 'java'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(21): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(21): error C2086: 'int import': Neudefinition
+          f:\src\jhlabs\jhlabs\image\convolvefilter.h(19): Siehe Deklaration von 'import'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(21): error C2143: Syntaxfehler: Es fehlt ';' vor '.'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(21): error C4430: Fehlender Typspezifizierer - int wird angenommen. Hinweis: "default-int" wird von C++ nicht unterstützt.
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(21): error C2086: 'int java': Neudefinition
+          f:\src\jhlabs\jhlabs\image\convolvefilter.h(19): Siehe Deklaration von 'java'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(27): error C2059: Syntaxfehler: 'public'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(27): error C3381: ConvolveFilter": Assemblyzugriffsspezifizierer sind nur in Code verfügbar, der mit einer /clr-Option kompiliert wurde.
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(27): error C2146: Syntaxfehler: Fehlendes ';' vor Bezeichner 'AbstractBufferedImageOp'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(27): error C2079: 'extends' verwendet undefiniertes class 'ConvolveFilter'
+f:\src\jhlabs\jhlabs\image\convolvefilter.h(27): error C2470: "AbstractBufferedImageOp": Sieht wie eine Funktionsdefinition aus, es ist aber keine Parameterliste vorhanden; sichtbarer Funktionstext wird übersprungen.

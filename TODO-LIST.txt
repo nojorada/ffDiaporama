@@ -1,0 +1,53 @@
+**************************************************
+* FFDIAPORAMA 2.1 - trunk
+*
+* TODO LIST on 23/11/2013
+**************************************************
+
+TODO :
+------
+Textures :
+        http://www.texturemate.com/
+        http://free-clipart.net/
+
+Clip art :
+        http://openclipart.org
+        http://www.iconarchive.com
+        http://www.pngfactory.net
+
+
+Criticité   Etat    Enoncé
+----------- ------- -------------------------------------------------------------------------------------------------------
+
+Normal      -       Bug sur le text scalling en render DVD
+
+Basse       NF      Etudier la transposition des cadres de sélection quand rotation dans la boite slide
+
+Basse       -       Pouvoir réduire ffD pendant la génération de film sous Windows
+
+Basse       -       Ajouter des boutons KeyFrame précédente et suivante dans la boite cut-vidéo
+
+Basse       WIP     Pouvoir activer/désactiver le clipping des textes dans les formes
+                    =>  Tout est pret maintenant : il ne reste plus qu'à ajouter l'option dans la boite texte et dans les fichiers de données
+
+Basse       WIP     Pouvoir déplacer le centre de rotation des formes
+                    =>  La fonction de dessin des formes permet maintenant un traitement plein écran
+                        Reste à faire :
+                            - Ajouter le centre de rotation quand la forme est sélectionnée et pouvoir le déplacer dans la zone interactive et dans la boite slide
+                            - Ajouter la position du centre de rotation dans les fichiers de données
+                            - Prendre en compte le centre de rotation dans la foction de dessin des formes
+
+Basse       -       Ce serait pas mal de pouvoir se créer des modèles couleurs (RVB)  dans 'retoucher ou recadrer l'image' que l'on puisse appliquer à plusieurs images
+
+Basse       -       Déplacer la sauvegarde des recentlist dans la base de données
+
+pb sur
+-probleme de seek des mts (libav 0.8 et peut-être d'autres)
+-Bug en génération NTSC: le son est mal synchronisé (voir: http://ffdiaporama.tuxfamily.org/Forum/viewtopic.php?id=601)
+-Problème de qualité des LUMA (voir: http://ffdiaporama.tuxfamily.org/Forum/viewtopic.php?id=654)
+
+----------- ------- -------------------------------------------------------------------------------------------------------
+-   : Pas encore traité
+NF  : New Feature
+WIP : Work in progress
+
