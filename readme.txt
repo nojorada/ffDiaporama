@@ -5,6 +5,8 @@
 **************************************************
 This fork of ffDiaporama is a further developed version from Gerd Kokerbeck for Win 
 and was patched by Norbert Raschka for Linux Manjaro with Qt6
+
+
 ffDiaporama is a tools to make diaporama as video
 ffDiaporama is a Free Software (Open Source) and is distributed under the GNU General Public License (GPL) version 2
 See authors.txt for more copyright and credits information
