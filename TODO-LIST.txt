@@ -1,3 +1,8 @@
+FFDIAPORAMA 3.0.0
+
+Anpassung an verschiedene Compiler
+
+
 **************************************************
 * FFDIAPORAMA 2.1 - trunk
 *
