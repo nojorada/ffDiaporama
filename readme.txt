@@ -1,9 +1,10 @@
 **************************************************
-* FFDIAPORAMA 2.1 - trunk
+* FFDIAPORAMA 3.0 - fork
 *
-* readme.txt on 24/11/2013
+* readme.txt on 21.05.2024
 **************************************************
-
+This fork of ffDiaporama is a further developed version from Gerd Kokerbeck for Win 
+and was patched by Norbert Raschka for Linux Manjaro with Qt6
 ffDiaporama is a tools to make diaporama as video
 ffDiaporama is a Free Software (Open Source) and is distributed under the GNU General Public License (GPL) version 2
 See authors.txt for more copyright and credits information
@@ -21,7 +22,7 @@ General purposes about building ffDiaporama for Linux
 -----------------------------------------------------
 
     In general:
-        Once a system has Qt 5, it was this version of Qt that is preferred.
+        Once a system has Qt 6, it was this version of Qt that is preferred.
         If a system has ffmpeg, ffmpeg is preferred to libav.
         If a system has only libav 0.8.x, then the libtag library must also be installed.
 
