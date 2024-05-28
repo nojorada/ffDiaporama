@@ -70,7 +70,7 @@ unix {
    LIBS   += -L../ffDiaporama_lib
 
    CFLAGS += -W"Missing debug information for"
-   QMAKE_CXXFLAGS_WARN_ON += -Wno-zero-as-null-pointer-constant
+   QMAKE_CXXFLAGS_WARN_ON += -Wall -Wno-overloaded-virtual -Wno-zero-as-null-pointer-constant
 
    contains(DEFINES,Q_OS_SOLARIS) {
 
