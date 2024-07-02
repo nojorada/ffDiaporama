@@ -1,8 +1,9 @@
-**************************************************
-* FFDIAPORAMA 3.0 - fork
-*
-* readme.txt on 21.05.2024
-**************************************************
+FFDIAPORAMA 3.0 - fork
+
+
+readme.txt on 21.05.2024
+
+
 This fork of ffDiaporama is a further developed version from Gerd Kokerbeck for Win 
 and was patched by Norbert Raschka for Linux Manjaro with Qt6
 
