@@ -70,7 +70,7 @@ unix {
    LIBS   += -L../ffDiaporama_lib
 
    CFLAGS += -W"Missing debug information for"
-   QMAKE_CXXFLAGS_WARN_ON += -Wall -Wno-overloaded-virtual -Wno-zero-as-null-pointer-constant
+   QMAKE_CXXFLAGS_WARN_ON += -Wno-zero-as-null-pointer-constant
 
    contains(DEFINES,Q_OS_SOLARIS) {
 
@@ -168,9 +168,11 @@ unix {
         #INCLUDEPATH += "f:/ffmpeg.4.0/include"
         #LIBS        += -L"f:/ffmpeg.4.0/lib"
 
-        INCLUDEPATH += "d:/ffmpeg/ffmpeg.6.0/include"
-        LIBS        += -L"d:/ffmpeg/ffmpeg.6.0/lib"
+        #INCLUDEPATH += "d:/ffmpeg/ffmpeg.6.0/include"
+        #LIBS        += -L"d:/ffmpeg/ffmpeg.6.0/lib"
 
+         INCLUDEPATH += "d:/ffmpeg/ffmpeg.7.0/include"
+         LIBS        += -L"d:/ffmpeg/ffmpeg.7.0/lib"
         #INCLUDEPATH += f:/ffmpeg_vs_build_2/msvc/include
         #LIBS+=-L"f:/ffmpeg_vs_build_2/msvc/lib/x64"
     }
@@ -271,6 +273,7 @@ SOURCES +=  \
             engine/cVideoFile.cpp \
             engine/cBrushDefinition.cpp \
             engine/cDriveList.cpp \
+            engine/ffTools.cpp \
             engine/_Transition.cpp \
             engine/_EncodeVideo.cpp \
             engine/_StyleDefinitions.cpp \
@@ -353,6 +356,7 @@ HEADERS  += MainWindow/cCustomSlideTable.h \
             engine/cVideoFile.h \
             engine/cBrushDefinition.h \
             engine/cDriveList.h \
+            engine/ffTools.h \
             engine/_Transition.h \
             engine/_EncodeVideo.h \
             engine/_StyleDefinitions.h \
