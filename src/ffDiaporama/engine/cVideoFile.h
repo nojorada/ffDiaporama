@@ -114,7 +114,7 @@ class cVideoFile : public cBaseMediaFile
       virtual void     CloseResampler();
       virtual void     CheckResampler(int RSC_InChannels,int RSC_OutChannels,AVSampleFormat RSC_InSampleFmt,AVSampleFormat RSC_OutSampleFmt,int RSC_InSampleRate,int RSC_OutSampleRate
                                          #if (defined(LIBAV)&&(LIBAVVERSIONINT>=9)) || defined(FFMPEG)
-                                            ,uint64_t RSC_InChannelLayout,uint64_t RSC_OutChannelLayout
+                                            , AVChannelLayout& RSC_InChannelLayout, AVChannelLayout& RSC_OutChannelLayout
                                          #endif
                                    );
       virtual u_int8_t *Resample(AVFrame *Frame,int64_t *SizeDecoded,int DstSampleSize);
@@ -153,7 +153,7 @@ class cVideoFile : public cBaseMediaFile
 
       // Audio resampling
       SwrContext              *RSC;
-      uint64_t                RSC_InChannelLayout,RSC_OutChannelLayout;
+      AVChannelLayout         RSC_InChannelLayout, RSC_OutChannelLayout;
       int                     RSC_InChannels,RSC_OutChannels;
       int                     RSC_InSampleRate,RSC_OutSampleRate;
       AVSampleFormat          RSC_InSampleFmt,RSC_OutSampleFmt;

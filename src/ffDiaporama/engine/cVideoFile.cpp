@@ -148,8 +148,8 @@ void cVideoFile::Reset(OBJECTTYPE TheWantedObjectType)
    RSC_OutChannels = 2;
    RSC_InSampleRate = 48000;
    RSC_OutSampleRate = 48000;
-   RSC_InChannelLayout = av_get_default_channel_layout(2);
-   RSC_OutChannelLayout = av_get_default_channel_layout(2);
+   av_channel_layout_default(&RSC_InChannelLayout, 2);
+   av_channel_layout_default(&RSC_OutChannelLayout, 2);
    RSC_InSampleFmt = AV_SAMPLE_FMT_S16;
    RSC_OutSampleFmt = AV_SAMPLE_FMT_S16;
 
@@ -574,12 +574,12 @@ bool cVideoFile::GetChildFullInformationFromFile(bool, cCustomIcon *Icon, QStrin
                   case AV_SAMPLE_FMT_DBLP: SampleFMT = "-DBLP"; ExtendedProperties->append(TrackNum + QString("Sample format") + QString("##") + "double, planar");           break;
                   default: SampleFMT = "-?";    ExtendedProperties->append(TrackNum + QString("Sample format") + QString("##") + "Unknown");                  break;
                }
-               if (CodecContext->channels == 1)
+               if (CodecContext->CC_CHANNELS == 1)
                   ExtendedProperties->append(TrackNum + QString("Channels") + QString("##") + QApplication::translate("cBaseMediaFile", "Mono", "Audio channels mode") + SampleFMT);
-               else if (CodecContext->channels == 2)
+               else if (CodecContext->CC_CHANNELS == 2)
                   ExtendedProperties->append(TrackNum + QString("Channels") + QString("##") + QApplication::translate("cBaseMediaFile", "Stereo", "Audio channels mode") + SampleFMT);
                else
-                  ExtendedProperties->append(TrackNum + QString("Channels") + QString("##") + QString("%1").arg(CodecContext->channels) + SampleFMT);
+                  ExtendedProperties->append(TrackNum + QString("Channels") + QString("##") + QString("%1").arg(CodecContext->CC_CHANNELS) + SampleFMT);
 
                // Frequency
                if (int(CodecContext->sample_rate / 1000) * 1000 > 0)
@@ -716,8 +716,7 @@ bool cVideoFile::GetChildFullInformationFromFile(bool, cCustomIcon *Icon, QStrin
 
                         while (Continue)
                         {
-                           StreamPacket = new AVPacket();
-                           av_init_packet(StreamPacket);
+                           StreamPacket = getNewPacket();//new AVPacket();
                            StreamPacket->flags |= AV_PKT_FLAG_KEY;  // HACK for CorePNG to decode as normal PNG by default
                            if (av_read_frame(LibavFile, StreamPacket) == 0)
                            {
@@ -792,9 +791,7 @@ bool cVideoFile::GetChildFullInformationFromFile(bool, cCustomIcon *Icon, QStrin
                            // Continue with a new one
                            if (StreamPacket != NULL)
                            {
-                              AV_FREE_PACKET(StreamPacket); // Free the StreamPacket that was allocated by previous call to av_read_frame
-                              delete StreamPacket;
-                              StreamPacket = NULL;
+                              deletePacket(&StreamPacket);
                            }
                         }
                         if ((!IsVideoFind) && (!Img))
@@ -1099,17 +1096,18 @@ void cVideoFile::CloseResampler()
 //*********************************************************************************************************************
 
 void cVideoFile::CheckResampler(int RSC_InChannels, int RSC_OutChannels, AVSampleFormat RSC_InSampleFmt, AVSampleFormat RSC_OutSampleFmt, int RSC_InSampleRate, int RSC_OutSampleRate
-   , uint64_t RSC_InChannelLayout, uint64_t RSC_OutChannelLayout)
+   , AVChannelLayout& RSC_InChannelLayout, AVChannelLayout& RSC_OutChannelLayout
+   /*, uint64_t RSC_InChannelLayout, uint64_t RSC_OutChannelLayout*/)
 {
-   if (RSC_InChannelLayout == 0)  
-      RSC_InChannelLayout = av_get_default_channel_layout(RSC_InChannels);
-   if (RSC_OutChannelLayout == 0) 
-      RSC_OutChannelLayout = av_get_default_channel_layout(RSC_OutChannels);
+   if (!av_channel_layout_check(&RSC_InChannelLayout) /* RSC_InChannelLayout == 0*/)
+      av_channel_layout_default(&RSC_InChannelLayout, RSC_InChannels);// RSC_InChannelLayout = av_get_default_channel_layout(RSC_InChannels);
+   if (!av_channel_layout_check(&RSC_OutChannelLayout) /* RSC_OutChannelLayout == 0*/)
+      av_channel_layout_default(&RSC_OutChannelLayout, RSC_OutChannels); //RSC_OutChannelLayout = av_get_default_channel_layout(RSC_OutChannels);
    if ((RSC != NULL) &&
       ((RSC_InChannels != this->RSC_InChannels) || (RSC_OutChannels != this->RSC_OutChannels)
       || (RSC_InSampleFmt != this->RSC_InSampleFmt) || (RSC_OutSampleFmt != this->RSC_OutSampleFmt)
       || (RSC_InSampleRate != this->RSC_InSampleRate) || (RSC_OutSampleRate != this->RSC_OutSampleRate)
-      || (RSC_InChannelLayout != this->RSC_InChannelLayout) || (RSC_OutChannelLayout != this->RSC_OutChannelLayout)
+      || av_channel_layout_compare(&RSC_InChannelLayout, &this->RSC_InChannelLayout) || av_channel_layout_compare(&RSC_OutChannelLayout, &this->RSC_OutChannelLayout)
       )) 
       CloseResampler();
    if (!RSC)
@@ -1127,9 +1125,9 @@ void cVideoFile::CheckResampler(int RSC_InChannels, int RSC_OutChannels, AVSampl
                                   RSC_InChannelLayout, RSC_InSampleFmt, RSC_InSampleRate,
                                   0, NULL);*/
       RSC = swr_alloc();
-      av_opt_set_int(RSC, "in_channel_layout", RSC_InChannelLayout, 0);
+      av_opt_set_chlayout(RSC, "in_chlayout", &RSC_InChannelLayout, 0);
       av_opt_set_int(RSC, "in_sample_rate", RSC_InSampleRate, 0);
-      av_opt_set_int(RSC, "out_channel_layout", RSC_OutChannelLayout, 0);
+      av_opt_set_chlayout(RSC, "out_chlayout", &RSC_OutChannelLayout, 0);
       av_opt_set_int(RSC, "out_sample_rate", RSC_OutSampleRate, 0);
       av_opt_set_int(RSC, "in_channel_count", RSC_InChannels, 0);
       av_opt_set_int(RSC, "out_channel_count", RSC_OutChannels, 0);
@@ -1401,8 +1399,7 @@ bool cVideoFile::SeekFile(AVStream *VideoStream, AVStream *AudioStream, int64_t 
    // elsewhere, redo seek 5 times until exit with error
    if (AudioStream)
    {
-      AVPacket *StreamPacket = new AVPacket();
-      av_init_packet(StreamPacket);
+      AVPacket* StreamPacket = getNewPacket();// new AVPacket();
       StreamPacket->flags |= AV_PKT_FLAG_KEY;
       int read_error, read_error_count = 0;
       while ((read_error = av_read_frame(LibavFile, StreamPacket)) != 0 && read_error_count++ < 10);
@@ -1414,8 +1411,7 @@ bool cVideoFile::SeekFile(AVStream *VideoStream, AVStream *AudioStream, int64_t 
          if (SeekErrorCount < 5)
             ret = SeekFile(VideoStream, AudioStream, Position);
       }
-      AV_FREE_PACKET(StreamPacket); // Free the StreamPacket that was allocated here local
-      delete StreamPacket;
+      deletePacket(&StreamPacket); 
 
    }
    return ret;
@@ -1553,7 +1549,7 @@ QImage *cVideoFile::ReadFrame(bool PreviewMode, int64_t Position, bool DontUseEn
    if (AudioContext.ContinueAudio)
    {
       AudioContext.NeedResampling = ((AudioContext.CodecContext->sample_fmt != AV_SAMPLE_FMT_S16)
-         || (AudioContext.CodecContext->channels != SoundTrackBloc->Channels)
+         || (AudioContext.CodecContext->CC_CHANNELS != SoundTrackBloc->Channels)
          || (AudioContext.CodecContext->sample_rate != SoundTrackBloc->SamplingRate));
 
       //qDebug() << "audio needs resampling " << AudioContext.NeedResampling;
@@ -1583,11 +1579,13 @@ QImage *cVideoFile::ReadFrame(bool PreviewMode, int64_t Position, bool DontUseEn
       {
          if (!ResamplingContinue)
             CloseResampler();
-         CheckResampler(AudioContext.CodecContext->channels, SoundTrackBloc->Channels,
+         AVChannelLayout avcl;
+         av_channel_layout_default(&avcl, SoundTrackBloc->Channels);
+         CheckResampler(AudioContext.CodecContext->CC_CHANNELS, SoundTrackBloc->Channels,
             AVSampleFormat(AudioContext.CodecContext->sample_fmt), SoundTrackBloc->SampleFormat,
             AudioContext.CodecContext->sample_rate, SoundTrackBloc->SamplingRate,
-            AudioContext.CodecContext->channel_layout,
-            av_get_default_channel_layout(SoundTrackBloc->Channels)
+            AudioContext.CodecContext->ch_layout ,
+            avcl 
          );
       }
    }
@@ -1653,14 +1651,13 @@ QImage *cVideoFile::ReadFrame(bool PreviewMode, int64_t Position, bool DontUseEn
 
       while (AudioContext.ContinueAudio)
       {
-         AVPacket *StreamPacket = new AVPacket();
+         AVPacket *StreamPacket = getNewPacket();//new AVPacket();
          if (!StreamPacket)
          {
             AudioContext.ContinueAudio = false;
          }
          else
          {
-            av_init_packet(StreamPacket);
             StreamPacket->flags |= AV_PKT_FLAG_KEY;
             int err;
             if ((err = av_read_frame(LibavAudioFile, StreamPacket)) < 0)
@@ -1689,9 +1686,7 @@ QImage *cVideoFile::ReadFrame(bool PreviewMode, int64_t Position, bool DontUseEn
          // Continue with a new one
          if (StreamPacket != NULL)
          {
-            AV_FREE_PACKET(StreamPacket); // Free the StreamPacket that was allocated by previous call to av_read_frame
-            delete StreamPacket;
-            StreamPacket = NULL;
+            deletePacket(&StreamPacket);
          }
       }
    }
@@ -1727,14 +1722,13 @@ QImage *cVideoFile::ReadFrame(bool PreviewMode, int64_t Position, bool DontUseEn
 
          while (ContinueVideo)
          {
-            AVPacket *StreamPacket = new AVPacket();
+            AVPacket *StreamPacket = getNewPacket();//new AVPacket();
             if (!StreamPacket)
             {
                ContinueVideo = false;
             }
             else
             {
-               av_init_packet(StreamPacket);
                StreamPacket->flags |= AV_PKT_FLAG_KEY;  // HACK for CorePNG to decode as normal PNG by default
 
                int errcode = 0;
@@ -1931,9 +1925,7 @@ QImage *cVideoFile::ReadFrame(bool PreviewMode, int64_t Position, bool DontUseEn
             // Continue with a new one
             if (StreamPacket != NULL)
             {
-               AV_FREE_PACKET(StreamPacket); // Free the StreamPacket that was allocated by previous call to av_read_frame
-               delete StreamPacket;
-               StreamPacket = NULL;
+               deletePacket(&StreamPacket);
             }
          }
       }
@@ -2103,7 +2095,7 @@ AVFrame *cVideoFile::ReadYUVFrame(bool PreviewMode, int64_t Position, bool DontU
    if (AudioContext.ContinueAudio)
    {
       AudioContext.NeedResampling = ((AudioContext.AudioStream->CODEC_OR_PAR->CODEC_SAMPLE_FORMAT != AV_SAMPLE_FMT_S16)
-         || (AudioContext.AudioStream->CODEC_OR_PAR->channels != SoundTrackBloc->Channels)
+         || (AudioContext.AudioStream->CODEC_OR_PAR->CC_CHANNELS != SoundTrackBloc->Channels)
          || (AudioContext.AudioStream->CODEC_OR_PAR->sample_rate != SoundTrackBloc->SamplingRate));
 
       //qDebug() << "audio needs resampling " << AudioContext.NeedResampling;
@@ -2133,11 +2125,13 @@ AVFrame *cVideoFile::ReadYUVFrame(bool PreviewMode, int64_t Position, bool DontU
       {
          if (!ResamplingContinue)
             CloseResampler();
-         CheckResampler(AudioContext.AudioStream->codecpar->channels, SoundTrackBloc->Channels,
+         AVChannelLayout avcl;
+         av_channel_layout_default(&avcl, SoundTrackBloc->Channels);
+         CheckResampler(AudioContext.AudioStream->codecpar->CC_CHANNELS, SoundTrackBloc->Channels,
             AVSampleFormat(AudioContext.AudioStream->codecpar->format), SoundTrackBloc->SampleFormat,
             AudioContext.AudioStream->codecpar->sample_rate, SoundTrackBloc->SamplingRate,
-            AudioContext.AudioStream->codecpar->channel_layout,
-            av_get_default_channel_layout(SoundTrackBloc->Channels)
+            AudioContext.AudioStream->codecpar->ch_layout ,
+            avcl 
          );
       }
    }
@@ -2197,14 +2191,13 @@ AVFrame *cVideoFile::ReadYUVFrame(bool PreviewMode, int64_t Position, bool DontU
 
       while (AudioContext.ContinueAudio)
       {
-         AVPacket *StreamPacket = new AVPacket();
+         AVPacket *StreamPacket = getNewPacket();
          if (!StreamPacket)
          {
             AudioContext.ContinueAudio = false;
          }
          else
          {
-            av_init_packet(StreamPacket);
             StreamPacket->flags |= AV_PKT_FLAG_KEY;
             int err;
             if ((err = av_read_frame(LibavAudioFile, StreamPacket)) < 0)
@@ -2233,9 +2226,7 @@ AVFrame *cVideoFile::ReadYUVFrame(bool PreviewMode, int64_t Position, bool DontU
          // Continue with a new one
          if (StreamPacket != NULL)
          {
-            AV_FREE_PACKET(StreamPacket); // Free the StreamPacket that was allocated by previous call to av_read_frame
-            delete StreamPacket;
-            StreamPacket = NULL;
+            deletePacket(&StreamPacket);
          }
       }
    }
@@ -2267,14 +2258,13 @@ AVFrame *cVideoFile::ReadYUVFrame(bool PreviewMode, int64_t Position, bool DontU
 
          while (ContinueVideo)
          {
-            AVPacket *StreamPacket = new AVPacket();
+            AVPacket *StreamPacket = getNewPacket();
             if (!StreamPacket)
             {
                ContinueVideo = false;
             }
             else
             {
-               av_init_packet(StreamPacket);
                StreamPacket->flags |= AV_PKT_FLAG_KEY;  // HACK for CorePNG to decode as normal PNG by default
 
                int errcode = 0;
@@ -2472,9 +2462,7 @@ AVFrame *cVideoFile::ReadYUVFrame(bool PreviewMode, int64_t Position, bool DontU
             // Continue with a new one
             if (StreamPacket != NULL)
             {
-               AV_FREE_PACKET(StreamPacket); // Free the StreamPacket that was allocated by previous call to av_read_frame
-               delete StreamPacket;
-               StreamPacket = NULL;
+               deletePacket(&StreamPacket);
             }
          }
       }
@@ -2633,9 +2621,7 @@ void cVideoFile::DecodeAudio(sAudioContext *AudioContext, AVPacket *StreamPacket
    // Continue with a new one
    if (StreamPacket != NULL)
    {
-      AV_FREE_PACKET(StreamPacket); // Free the StreamPacket that was allocated by previous call to av_read_frame
-      delete StreamPacket;
-      StreamPacket = NULL;
+      deletePacket(&StreamPacket);
    }
    // Check if we need to continue loop
    // Note: FPSDuration*(!VideoStream?2:1) is to enhance preview speed
@@ -2658,7 +2644,7 @@ void cVideoFile::DecodeAudioFrame(sAudioContext *AudioContext, qreal *FramePts, 
    else
    {
       Data = Frame->data[0];
-      SizeDecoded = Frame->nb_samples*av_get_bytes_per_sample(AudioCodecContext->sample_fmt)*AudioCodecContext->channels;
+      SizeDecoded = Frame->nb_samples*av_get_bytes_per_sample(AudioCodecContext->sample_fmt)*AudioCodecContext->CC_CHANNELS;
    }
    AudioContext->ContinueAudio = (Data != NULL);
    if (AudioContext->ContinueAudio)
@@ -3059,7 +3045,6 @@ QImage *cVideoFile::ConvertYUVToRGB(bool PreviewMode, AVFrame *Frame)
 
    int W = Frame->width * aspectRatio;  W -= (W % 4);   // W must be a multiple of 4 ????
    int H = Frame->height;
-   QMyImage *retImage = NULL;
 
    if (yuv2rgbImage == NULL)
       yuv2rgbImage = new QImage(W, H, QTPIXFMT);
@@ -3081,7 +3066,7 @@ QImage *cVideoFile::ConvertYUVToRGB(bool PreviewMode, AVFrame *Frame)
          yuv2rgbImage->bits(),
          PIXFMT,                             // The format in which the picture data is stored (see http://wiki.aasimon.org/doku.php?id=Libav:pixelformat)
          W,                                  // The width of the image in pixels
-         H,                                   // The height of the image in pixels
+         H,                                  // The height of the image in pixels
          1
       );
 
@@ -3157,19 +3142,15 @@ QImage *cVideoFile::ConvertYUVToRGB(bool PreviewMode, AVFrame *Frame)
       // free FrameBufferRGB because we don't need it in the future
       //FREEFRAME(&FrameBufferRGB);
    }
-   //cppart = curPCounter();
-   //QImage *retImage = new QImage(LastImage.convertToFormat(QImage::Format_ARGB32_Premultiplied));
-   //QImage *retImage = new QImage(LastImage);
-   //QImage *retImage = new QImage(yuv2rgbImage->convertToFormat(QImage::Format_ARGB32_Premultiplied));
-   //qDebug() << "YUV2RGB convert " << PC2time(curPCounter()-cppart,true);
-   //qDebug() << "YUV2RGB " << PC2time(curPCounter()-cp,true);
+#if QT_VERSION > 0x050900
+   QImage* retImage = new QMyImage(LastImage);
+   retImage->reinterpretAsFormat(QImage::Format_ARGB32_Premultiplied);
+#else
+   QMyImage *retImage = NULL;
    retImage = new QMyImage(LastImage/*.convertToFormat(QImage::Format_ARGB32_Premultiplied)*/);
    if (retImage->format() != QImage::Format_ARGB32_Premultiplied)
-      //QMyImage(*retImage).convert_ARGB_PM_to_ARGB_inplace();
-      //QMyImage(*retImage).convert_ARGB_to_ARGB_PM_inplace();
       QMyImage(*retImage).forcePremulFormat();
-   //QMyImage(*retImage).forcePremulFormat();
-   //convert_ARGB_to_ARGB_PM_inplace_sse2(retImage);
+#endif
    return retImage;
 }
 
@@ -3769,7 +3750,7 @@ QImage *cMusicObject::ReadFrame(bool PreviewMode, int64_t Position, bool DontUse
    if (AudioContext.ContinueAudio)
    {
       AudioContext.NeedResampling = ((AudioContext.AudioStream->CODEC_OR_PAR->CODEC_SAMPLE_FORMAT != AV_SAMPLE_FMT_S16)
-         || (AudioContext.AudioStream->CODEC_OR_PAR->channels != SoundTrackBloc->Channels)
+         || (AudioContext.AudioStream->CODEC_OR_PAR->CC_CHANNELS != SoundTrackBloc->Channels)
          || (AudioContext.AudioStream->CODEC_OR_PAR->sample_rate != SoundTrackBloc->SamplingRate));
 
       //qDebug() << "needResampling " << AudioContext.NeedResampling;
@@ -3802,11 +3783,13 @@ QImage *cMusicObject::ReadFrame(bool PreviewMode, int64_t Position, bool DontUse
       {
          if (!ResamplingContinue)
             CloseResampler();
-         CheckResampler(AudioContext.AudioStream->CODEC_OR_PAR->channels, SoundTrackBloc->Channels,
+         AVChannelLayout avcl;
+         av_channel_layout_default(&avcl, SoundTrackBloc->Channels);
+         CheckResampler(AudioContext.AudioStream->CODEC_OR_PAR->CC_CHANNELS, SoundTrackBloc->Channels,
             AVSampleFormat(AudioContext.AudioStream->CODEC_OR_PAR->CODEC_SAMPLE_FORMAT), SoundTrackBloc->SampleFormat,
             AudioContext.AudioStream->CODEC_OR_PAR->sample_rate, SoundTrackBloc->SamplingRate
-            , AudioContext.AudioStream->CODEC_OR_PAR->channel_layout
-            , av_get_default_channel_layout(SoundTrackBloc->Channels)
+            , AudioContext.AudioStream->CODEC_OR_PAR->ch_layout 
+            , avcl 
          );
       }
    }
@@ -3816,14 +3799,13 @@ QImage *cMusicObject::ReadFrame(bool PreviewMode, int64_t Position, bool DontUse
    //*************************************************************************************************************************************
    while (AudioContext.ContinueAudio)
    {
-      AVPacket *StreamPacket = new AVPacket();
+       AVPacket *StreamPacket = getNewPacket();//new AVPacket();
       if (!StreamPacket)
       {
          AudioContext.ContinueAudio = false;
       }
       else
       {
-         av_init_packet(StreamPacket);
          StreamPacket->flags |= AV_PKT_FLAG_KEY;
          int err;
          if ((err = av_read_frame(LibavAudioFile, StreamPacket)) < 0)
@@ -3853,9 +3835,7 @@ QImage *cMusicObject::ReadFrame(bool PreviewMode, int64_t Position, bool DontUse
       // Continue with a new one
       if (StreamPacket != NULL)
       {
-         AV_FREE_PACKET(StreamPacket); // Free the StreamPacket that was allocated by previous call to av_read_frame
-         delete StreamPacket;
-         StreamPacket = NULL;
+         deletePacket(&StreamPacket);
       }
    }
 

@@ -26,4 +26,5 @@ void deletePacket(AVPacket**pp)
    delete* pp;
    *pp = NULL;
 #endif
+   * pp = NULL;
 }

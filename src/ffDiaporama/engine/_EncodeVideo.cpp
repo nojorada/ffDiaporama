@@ -30,6 +30,7 @@ extern "C"
 {
    #include <libavutil/imgutils.h>
 }
+#include "ffTools.h"
 
 //#define PIXFMT      PIX_FMT_RGB24
 //#define QTPIXFMT    QImage::Format_RGB888
@@ -841,7 +842,7 @@ bool cEncodeVideo::OpenAudioStream(sAudioCodecDef *AudioCodecDef,int &AudioChann
 
    // Setup codec parameters
    ostAudio.cc->sample_fmt = AV_SAMPLE_FMT_S16;
-   ostAudio.cc->channels = AudioChannels;
+   ostAudio.cc->CC_CHANNELS = AudioChannels;
    ostAudio.cc->sample_rate = AudioSampleRate;
    ostAudio.cc->time_base = MakeAVRational(1, AudioSampleRate);
    ostAudio.stream->time_base = MakeAVRational( 1, AudioSampleRate );
@@ -890,17 +891,19 @@ bool cEncodeVideo::OpenAudioStream(sAudioCodecDef *AudioCodecDef,int &AudioChann
    } 
    else if (codec->id == AV_CODEC_ID_AMR_NB) 
    {
-      ostAudio.cc->channels = 1;
+      ostAudio.cc->CC_CHANNELS = 1;
       AudioChannels = 1;
    } 
    else if (codec->id == AV_CODEC_ID_AMR_WB) 
    {
-      ostAudio.cc->channels = 1;
+      ostAudio.cc->CC_CHANNELS = 1;
       AudioChannels = 1;
    }
    ostAudio.cc->bit_rate = AudioBitrate;
    av_dict_set(&opts,"ab",QString("%1").arg(AudioBitrate).toUtf8(),0);
-   ostAudio.cc->channel_layout = (ostAudio.cc->channels==2?AV_CH_LAYOUT_STEREO:AV_CH_LAYOUT_MONO);
+   AVChannelLayout avcl;
+   av_channel_layout_default(&avcl, (ostAudio.cc->CC_CHANNELS == 2 ? 2 : 1));
+   ostAudio.cc->ch_layout = avcl;
 
    int errcode = avcodec_open2(ostAudio.cc,codec,&opts);
    if (errcode < 0) 
@@ -911,7 +914,7 @@ bool cEncodeVideo::OpenAudioStream(sAudioCodecDef *AudioCodecDef,int &AudioChann
       return false;
    }
 
-   ostAudio.frame = ALLOCFRAME();  // Allocate structure for RGB image
+   ostAudio.frame = ALLOCFRAME();  // Allocate structure for audio data
    if (ostAudio.frame == NULL) 
    {
       ToLog(LOGMSG_CRITICAL,QString("EncodeVideo-OpenAudioStream:: avcodec_alloc_frame failed"));
@@ -1086,18 +1089,20 @@ bool cEncodeVideo::DoEncode()
    if (ostAudio.stream)
    {
       if (ostAudio.cc->sample_fmt!=RenderMusic.SampleFormat 
-         || ostAudio.cc->channels!=RenderMusic.Channels
+         || ostAudio.cc->CC_CHANNELS != RenderMusic.Channels
          || AudioSampleRate!=RenderMusic.SamplingRate) 
       {
          if (!AudioResampler) 
          {
             AudioResampler = swr_alloc();
-            av_opt_set_int(AudioResampler,"in_channel_layout",     av_get_default_channel_layout(ToEncodeMusic.Channels),0);
+            AVChannelLayout avcl;
+            av_channel_layout_default(&avcl, ToEncodeMusic.Channels);
+            av_opt_set_chlayout(AudioResampler, "in_chlayout", &avcl, 0);
             av_opt_set_int(AudioResampler,"in_sample_rate",        ToEncodeMusic.SamplingRate,0);
-            av_opt_set_int(AudioResampler,"out_channel_layout",    ostAudio.cc->channel_layout,0);
+            av_opt_set_chlayout(AudioResampler, "out_chlayout",    &ostAudio.cc->ch_layout, 0);
             av_opt_set_int(AudioResampler,"out_sample_rate",       ostAudio.cc->sample_rate,0);
             av_opt_set_int(AudioResampler,"in_channel_count",      ToEncodeMusic.Channels,0);
-            av_opt_set_int(AudioResampler,"out_channel_count",     ostAudio.cc->channels,0);
+            av_opt_set_int(AudioResampler,"out_channel_count",     ostAudio.cc->CC_CHANNELS,0);
             av_opt_set_sample_fmt(AudioResampler,"out_sample_fmt", ostAudio.cc->sample_fmt,0);
             av_opt_set_sample_fmt(AudioResampler,"in_sample_fmt",  ToEncodeMusic.SampleFormat,0);
             if (swr_init(AudioResampler) < 0) 
@@ -1341,7 +1346,7 @@ void cEncodeVideo::Encoding(volatile bool *Continue)
          if (*Continue && ostAudio.stream && ostAudio.frame)
             ThreadEncodeAudio.setFuture(QT_CONCURRENT_RUN_4(this,&cEncodeVideo::EncodeMusic,Frame,&RenderMusic,&ToEncodeMusic,Continue));
 
-         if (*Continue && (renderOnly || ostVideo.stream && VideoFrameConverter && ostVideo.frame) )
+         if (*Continue && (renderOnly || (ostVideo.stream && VideoFrameConverter && ostVideo.frame)) )
          {
             if (Frame->hasYUV)
             {
@@ -1434,7 +1439,7 @@ void cEncodeVideo::EncodeMusic(cDiaporamaObjectInfo *Frame, cSoundBlockList *Ren
 
    int      errcode;
    int64_t  DestNbrSamples = ToEncodeMusic->SoundPacketSize/(ToEncodeMusic->Channels*av_get_bytes_per_sample(ToEncodeMusic->SampleFormat));
-   int      DestSampleSize = ostAudio.cc->channels*av_get_bytes_per_sample(ostAudio.cc->sample_fmt);
+   int      DestSampleSize = ostAudio.cc->CC_CHANNELS * av_get_bytes_per_sample(ostAudio.cc->sample_fmt);
    u_int8_t *DestPacket    = NULL;
    int16_t  *PacketSound   = NULL;
    int64_t  DestPacketSize = DestNbrSamples*DestSampleSize;
@@ -1453,7 +1458,7 @@ void cEncodeVideo::EncodeMusic(cDiaporamaObjectInfo *Frame, cSoundBlockList *Ren
          if (AudioResampler != NULL) 
          {
             int out_samples = av_rescale_rnd(swr_get_delay(AudioResampler,ToEncodeMusic->SamplingRate)+DestNbrSamples,ostAudio.cc->sample_rate,ToEncodeMusic->SamplingRate,AV_ROUND_UP);
-            av_samples_alloc(&AudioResamplerBuffer,NULL,ostAudio.cc->channels,out_samples,ostAudio.cc->sample_fmt,0);
+            av_samples_alloc(&AudioResamplerBuffer,NULL,ostAudio.cc->CC_CHANNELS,out_samples,ostAudio.cc->sample_fmt,0);
             if (!AudioResamplerBuffer) 
             {
                ToLog(LOGMSG_CRITICAL,QString("EncodeMusic: AudioResamplerBuffer allocation failed"));
@@ -1468,7 +1473,7 @@ void cEncodeVideo::EncodeMusic(cDiaporamaObjectInfo *Frame, cSoundBlockList *Ren
             } 
             else 
             {
-               if (av_samples_fill_arrays(out_data,&out_linesize,AudioResamplerBuffer,ostAudio.cc->channels,out_samples,ostAudio.cc->sample_fmt,0) < 0) 
+               if (av_samples_fill_arrays(out_data,&out_linesize,AudioResamplerBuffer,ostAudio.cc->CC_CHANNELS,out_samples,ostAudio.cc->sample_fmt,0) < 0)
                {
                   ToLog(LOGMSG_CRITICAL,QString("failed out_data fill arrays"));
                   *Continue = false;
@@ -1503,21 +1508,18 @@ void cEncodeVideo::EncodeMusic(cDiaporamaObjectInfo *Frame, cSoundBlockList *Ren
             ostAudio.frame->nb_samples      = DestPacketSize/DestSampleSize;
             ostAudio.frame->pts = ostAudio.LastPts;// av_rescale_q(ostAudio.frame->nb_samples*AudioFrameNbr, AVR, ostAudio.stream->time_base);
             ostAudio.frame->format          = ostAudio.cc->sample_fmt;
-            ostAudio.frame->channel_layout  = ostAudio.cc->channel_layout;
-            ostAudio.frame->channels = ostAudio.cc->channels; // !!!
+            ostAudio.frame->ch_layout = ostAudio.cc->ch_layout;
+            ostAudio.frame->CC_CHANNELS = ostAudio.cc->CC_CHANNELS; // !!!
 
             // fill buffer
-            errcode = avcodec_fill_audio_frame(ostAudio.frame,ostAudio.cc->channels,ostAudio.cc->sample_fmt,(const u_int8_t*)DestPacket,DestPacketSize,1);
+            errcode = avcodec_fill_audio_frame(ostAudio.frame,ostAudio.cc->CC_CHANNELS,ostAudio.cc->sample_fmt,(const u_int8_t*)DestPacket,DestPacketSize,1);
             if (errcode >= 0) 
             {
                // Init packet
-               AVPacket pkt;
-               av_init_packet(&pkt);
-               pkt.size = 0;
-               pkt.data = NULL;
+               AVPacket* pkt = av_packet_alloc();
 
-               encode(ostAudio.cc, ostAudio.frame, &pkt);
-
+               encode(ostAudio.cc, ostAudio.frame, pkt);
+               av_packet_free(&pkt); 
                ostAudio.LastPts += ostAudio.frame->nb_samples; //ostAudio.IncreasingPts;
                AudioFrameNbr++;
                //ToLog(LOGMSG_INFORMATION,QString("Audio:  Stream:%1 - Frame:%2 - PTS:%3").arg(AudioStream->index).arg(ostAudio.frameNbr).arg(LastAudioPts));
@@ -1610,13 +1612,10 @@ void cEncodeVideo::EncodeVideo(const QImage *SrcImage,volatile bool *Continue)
 
    if (*Continue && !StopProcessWanted)
    {
-      AVPacket pkt;
-      av_init_packet(&pkt);
-      pkt.size = 0;
-      pkt.data = NULL;
+      AVPacket* pkt = av_packet_alloc();
 
-//      int got_packet = 0;
-      encode(ostVideo.cc, ostVideo.frame, &pkt);
+      encode(ostVideo.cc, ostVideo.frame, pkt);
+      av_packet_free(&pkt);
  
       ostVideo.LastPts += ostVideo.IncreasingPts;
       VideoFrameNbr++;
@@ -1670,13 +1669,9 @@ void cEncodeVideo::EncodeVideoFrame(AVFrame *frame, volatile bool *Continue)
 
    if (*Continue && !StopProcessWanted)
    {
-      AVPacket pkt;
-      av_init_packet(&pkt);
-      pkt.size = 0;
-      pkt.data = NULL;
-
-      //int got_packet = 0;
-      encode(ostVideo.cc, renderFrame, &pkt);
+      AVPacket* pkt = av_packet_alloc();
+      encode(ostVideo.cc, renderFrame, pkt);
+      av_packet_free(&pkt);
       ostVideo.LastPts += ostVideo.IncreasingPts;
       VideoFrameNbr++;
       //ToLog(LOGMSG_INFORMATION,QString("Video:  Stream:%1 - Frame:%2 - PTS:%3").arg(ostVideo.stream->index).arg(VideoFrameNbr).arg(LastVideoPts));
@@ -1692,15 +1687,14 @@ void cEncodeVideo::EncodeVideoFrame(AVFrame *frame, volatile bool *Continue)
 
 void cEncodeVideo::flush_encoders(void)
 {
-   AVPacket pkt;
-   av_init_packet(&pkt);
-   pkt.size = 0;
-   pkt.data = NULL;
+   AVPacket* pkt = av_packet_alloc();
+
 
    if(hasVideoStream())
-      encode(ostVideo.cc, NULL, &pkt);
+      encode(ostVideo.cc, NULL, pkt);
    if (hasAudioStream())
-      encode(ostAudio.cc, NULL, &pkt);
+      encode(ostAudio.cc, NULL, pkt);
+   av_packet_free(&pkt); 
 }
  
 bool cEncodeVideo::testEncode()

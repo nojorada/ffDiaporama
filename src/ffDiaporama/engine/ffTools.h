@@ -25,6 +25,7 @@ extern "C" {
 #endif
 
 
+#define CC_CHANNELS ch_layout.nb_channels
 AVPacket* getNewPacket();
 void releasePacketData(AVPacket*);
 void deletePacket(AVPacket**);
