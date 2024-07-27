@@ -1,11 +1,11 @@
 FFDIAPORAMA 3.0 - fork
 
 
-readme.txt on 21.05.2024
+readme.txt on 27.07.2024
 
 
 This fork of ffDiaporama is a further developed version from Gerd Kokerbeck for Win 
-and was patched by Norbert Raschka for Linux Manjaro with Qt6
+and was patched by Norbert Raschka for Linux Manjaro with Qt6 and now also for ffmpeg>7
 
 
 ffDiaporama is a tools to make diaporama as video
