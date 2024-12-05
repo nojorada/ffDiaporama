@@ -957,7 +957,7 @@ bool cDeviceModelList::InitLibav()
 {
    // Next step : start libav
    ToLog(LOGMSG_INFORMATION,QApplication::translate("MainWindow","Starting libav..."));
-   ToLog(LOGMSG_INFORMATION, QString("ffmpeg general version: %1").arg(FFMPEG_VERSION));
+   ToLog(LOGMSG_INFORMATION, QString("ffmpeg general version: %1").arg(FFMPEGVERSION));
    ToLog(LOGMSG_INFORMATION, QString("LIBAV general version: %1").arg(FFMPEGVERSION));
    ToLog(LOGMSG_INFORMATION, QString("LIBAVUTIL     version: %1.%2.%3.%4").arg(LIBAVUTIL_VERSION_MAJOR).arg(LIBAVUTIL_VERSION_MINOR).arg(LIBAVUTIL_VERSION_MICRO).arg(avutil_version()));
    ToLog(LOGMSG_INFORMATION, QString("LIBAVCODEC    version: %1.%2.%3.%4").arg(LIBAVCODEC_VERSION_MAJOR).arg(LIBAVCODEC_VERSION_MINOR).arg(LIBAVCODEC_VERSION_MICRO).arg(avcodec_version()));
