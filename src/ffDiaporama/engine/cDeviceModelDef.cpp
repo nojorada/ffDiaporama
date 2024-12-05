@@ -957,6 +957,15 @@ bool cDeviceModelList::InitLibav()
 {
    // Next step : start libav
    ToLog(LOGMSG_INFORMATION,QApplication::translate("MainWindow","Starting libav..."));
+   ToLog(LOGMSG_INFORMATION, QString("ffmpeg general version: %1").arg(FFMPEG_VERSION));
+   ToLog(LOGMSG_INFORMATION, QString("LIBAV general version: %1").arg(FFMPEGVERSION));
+   ToLog(LOGMSG_INFORMATION, QString("LIBAVUTIL     version: %1.%2.%3.%4").arg(LIBAVUTIL_VERSION_MAJOR).arg(LIBAVUTIL_VERSION_MINOR).arg(LIBAVUTIL_VERSION_MICRO).arg(avutil_version()));
+   ToLog(LOGMSG_INFORMATION, QString("LIBAVCODEC    version: %1.%2.%3.%4").arg(LIBAVCODEC_VERSION_MAJOR).arg(LIBAVCODEC_VERSION_MINOR).arg(LIBAVCODEC_VERSION_MICRO).arg(avcodec_version()));
+   ToLog(LOGMSG_INFORMATION, QString("LIBAVFORMAT   version: %1.%2.%3.%4").arg(LIBAVFORMAT_VERSION_MAJOR).arg(LIBAVFORMAT_VERSION_MINOR).arg(LIBAVFORMAT_VERSION_MICRO).arg(avformat_version()));
+   ToLog(LOGMSG_INFORMATION, QString("LIBAVFILTER   version: %1.%2.%3.%4").arg(LIBAVFILTER_VERSION_MAJOR).arg(LIBAVFILTER_VERSION_MINOR).arg(LIBAVFILTER_VERSION_MICRO).arg(avfilter_version()));
+   ToLog(LOGMSG_INFORMATION, QString("LIBSWSCALE    version: %1.%2.%3.%4").arg(LIBSWSCALE_VERSION_MAJOR).arg(LIBSWSCALE_VERSION_MINOR).arg(LIBSWSCALE_VERSION_MICRO).arg(swscale_version()));
+   ToLog(LOGMSG_INFORMATION, QString("LIBSWRESAMPLE version: %1.%2.%3.%4").arg(LIBSWRESAMPLE_VERSION_MAJOR).arg(LIBSWRESAMPLE_VERSION_MINOR).arg(LIBSWRESAMPLE_VERSION_MICRO).arg(swresample_version()));
+
    #if LIBAVFILTER_VERSION_INT < AV_VERSION_INT(7,14,100)
    avfilter_register_all();
    #endif

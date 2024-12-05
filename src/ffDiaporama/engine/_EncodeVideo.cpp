@@ -678,9 +678,6 @@ bool cEncodeVideo::OpenVideoStream(sVideoCodecDef *VideoCodecDef,int VideoCodecS
                if (isCudaEncoder && presetHQ == "faster")
                   presetHQ = "p2";
                av_dict_set(&opts, "preset", presetHQ.toLocal8Bit(), 0);
-               av_dict_set(&opts, "vprofile", appConfig->Profile_HQ.toLocal8Bit(), 0);  // 2 versions to support differents libav/ffmpeg
-               if (VideoCodecSubId != VCODEC_H265)
-                  av_dict_set(&opts, "profile", appConfig->Profile_HQ.toLocal8Bit(), 0);
                //const AVOption* o = av_opt_find((void *)codec, "tune", NULL, 0, 0);
                if(isCudaEncoder)
                   av_dict_set_int(&opts, "tune", 1, 0);
@@ -692,8 +689,6 @@ bool cEncodeVideo::OpenVideoStream(sVideoCodecDef *VideoCodecDef,int VideoCodecS
             else
             {
                av_dict_set(&opts, "preset", appConfig->Preset_PQ.toLocal8Bit(), 0);
-               av_dict_set(&opts, "vprofile", appConfig->Profile_PQ.toLocal8Bit(), 0);  // 2 versions to support differents libav/ffmpeg
-               av_dict_set(&opts, "profile", appConfig->Profile_PQ.toLocal8Bit(), 0);
                av_dict_set(&opts, "tune", appConfig->Tune_PQ.toLocal8Bit(), 0);
             }
             ////                                                           High Quality   Phone Quality
@@ -769,14 +764,16 @@ bool cEncodeVideo::OpenVideoStream(sVideoCodecDef *VideoCodecDef,int VideoCodecS
    
    // debug: show the option-dictionary
    // at this point the dictionary contains only values that can't be used
-   t = NULL;
-   TOLOG(LOGMSG_INFORMATION, QString("\nunused video encoding options: "));
-   while (t = av_dict_get(opts, "", t, AV_DICT_IGNORE_SUFFIX)) 
+   if (av_dict_count(opts) > 0)
    {
-      TOLOG(LOGMSG_INFORMATION, QString("option %1 value %2").arg(t->key).arg(t->value));
-      qDebug() << "opt " << t->key << " " << t->value;
+      t = NULL;
+      TOLOG(LOGMSG_INFORMATION, QString("\nunused video encoding options: "));
+      while (t = av_dict_get(opts, "", t, AV_DICT_IGNORE_SUFFIX)) 
+      {
+         TOLOG(LOGMSG_INFORMATION, QString("option %1 value %2").arg(t->key).arg(t->value));
+         qDebug() << "opt " << t->key << " " << t->value;
+      }
    }
-   
 
    // Create VideoFrameConverter
    VideoFrameConverter = sws_getContext(
