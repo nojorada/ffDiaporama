@@ -1,5 +1,3 @@
-<meta name="google-site-verification" content="ichFLpLtv8372eK96wZ00gPCHgGcIc5nflLwJOtswi0" />
-
 FFDIAPORAMA 3.0 - fork
 
 
