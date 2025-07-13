@@ -570,7 +570,7 @@ bool QCustomFolderTable::setThreadToWait()
 {
    if (ScanMediaList.isRunning()) 
    {
-      ScanMediaList.pause();
+      ScanMediaList.suspend();
       return true;
    }
    return false;
@@ -578,7 +578,7 @@ bool QCustomFolderTable::setThreadToWait()
 
 void QCustomFolderTable::setThreadResume()
 {
-   if( ScanMediaList.isPaused() )
+   if( ScanMediaList.isSuspended() )
       ScanMediaList.resume();
 }
 //====================================================================================================================
