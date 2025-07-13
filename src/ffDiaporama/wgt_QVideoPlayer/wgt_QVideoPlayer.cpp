@@ -282,7 +282,7 @@ void wgt_QVideoPlayer::SetAudioFPS()
    MixedMusic.SetFPS(double(1000)/ApplicationConfig->PreviewFPS,2,ApplicationConfig->PreviewSamplingRate,AV_SAMPLE_FMT_S16);
    Music.SetFPS(MixedMusic.WantedDuration,MixedMusic.Channels,MixedMusic.SamplingRate,MixedMusic.SampleFormat);
    if(!m_audioOutput.isNull())
-      m_audioOutput->stop();
+      m_audioOutput->reset();
    //delete audio_outputStream;
 
    setAudioOutput();
@@ -964,4 +964,3 @@ void wgt_QVideoPlayer::s_StartEndChangeByUser()
    emit StartEndChangeByUser();
 }
 
-//#include "cVideoPlayer.cpp"

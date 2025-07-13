@@ -163,8 +163,13 @@ cDriveDesc::cDriveDesc(QString ThePath,QString Alias,cApplicationConfig *Applica
 
         QProcess    Process;
         Process.setProcessChannelMode(QProcess::MergedChannels);
-
-        if (Path=="") Process.start("df "+Device); else Process.start("df "+Path);
+        QString processName("df");
+        QStringList processArgs;
+        if (Path=="")
+            processArgs << Device;
+        else
+            processArgs << Path;
+        Process.start(processName,processArgs);
 
         // use df to get information on drive (size/used/avail) and ensure drive is mounted
         if (!Process.waitForStarted()) {
