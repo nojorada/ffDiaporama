@@ -124,14 +124,14 @@ int diaporama_main(int argc, char* argv[])
    QTranslator qtTranslator;
    if (qtTranslator.load(QLocale::system(),
                "qt", "_",
-               QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+               QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
    {
        app.installTranslator(&qtTranslator);
    }
 
    QTranslator qtBaseTranslator;
    if (qtBaseTranslator.load("qtbase_" + QLocale::system().name(),
-               QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+               QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
    {
        app.installTranslator(&qtBaseTranslator);
    }
@@ -210,7 +210,7 @@ int diaporama_main(int argc, char* argv[])
        AutoLoad = l.first();
 
     // Log Level part
-    if (FuturLogMsgLevel < 1 || FuturLogMsgLevel > 4) 
+    if (FuturLogMsgLevel < 1 || FuturLogMsgLevel > 4)
       FuturLogMsgLevel = 2;
     switch (FuturLogMsgLevel)
     {
@@ -221,6 +221,7 @@ int diaporama_main(int argc, char* argv[])
         default: ToLog(LOGMSG_INFORMATION,"Set LogLevel to CRITICAL");      break;
     }
     LogMsgLevel = FuturLogMsgLevel;
+
 
     // Start GUI
     ToLog(LOGMSG_INFORMATION,"Start GUI ...");
