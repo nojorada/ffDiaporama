@@ -1295,8 +1295,9 @@ bool cDeviceModelList::checkCudaEncoder(const char *encoderName)
          ToLog(LOGMSG_CRITICAL, "cDeviceModelList::checkCudaEncoder: avcodec_open2() failed: " + QString(Buf));
          return false;
       }
-      avcodec_close(context);
+/*      avcodec_close(context);   Deprecated in ffmpeg 8 */
       avcodec_free_context(&context);
    }
    return bRet;
 }
+
