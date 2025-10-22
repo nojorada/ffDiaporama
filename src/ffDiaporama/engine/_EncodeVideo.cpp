@@ -635,7 +635,7 @@ bool cEncodeVideo::OpenVideoStream(sVideoCodecDef *VideoCodecDef,int VideoCodecS
       av_dict_set(&opts,"qmin",QString("%1").arg(ostVideo.cc->qmin).toUtf8(),0);
       av_dict_set(&opts,"qmax",QString("%1").arg(ostVideo.cc->qmax).toUtf8(),0);
 
-      ostVideo.cc->ticks_per_frame = 2; // tocheck
+//      ostVideo.cc->ticks_per_frame = 2; // tocheck
       if (ostVideo.cc->thread_count > 0)     
          av_dict_set(&opts,"threads",QString("%1").arg(ostVideo.cc->thread_count).toUtf8(),0);
       //av_dict_set(&opts,"lookahead-threads",QString("%1").arg(ostVideo.cc->thread_count).toUtf8(),0);
@@ -1939,3 +1939,4 @@ bool cEncodeVideo::encode(AVCodecContext *ctx, AVFrame *frame, AVPacket *pkt)
    }
    return true;
 }
+
