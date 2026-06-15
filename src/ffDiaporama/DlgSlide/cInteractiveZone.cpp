@@ -422,7 +422,7 @@ void cInteractiveZone::paintEvent(QPaintEvent *)
    }
    if (NbrSelected == 1)
    {
-      qDebug() << " drawn one object, CurrentShotNbr is " << CurrentShotNbr;
+      //qDebug() << " drawn one object, CurrentShotNbr is " << CurrentShotNbr;
       cCompositionObject* cobj = *pCurrentCompoObject;
       if (pCurrentCompoObjectNbr != 0)
       {

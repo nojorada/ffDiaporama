@@ -3,7 +3,7 @@
  <class>DlgSlideProperties</class>
  <widget class="QDialog" name="DlgSlideProperties">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::WindowModality::WindowModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -143,14 +143,14 @@ Information</string>
          </size>
         </property>
         <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+         <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
         </property>
        </widget>
       </item>
       <item>
        <widget class="Line" name="line_4">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -197,7 +197,7 @@ shot</string>
          </size>
         </property>
         <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+         <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
         </property>
        </widget>
       </item>
@@ -244,14 +244,14 @@ shot</string>
          </size>
         </property>
         <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+         <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
         </property>
        </widget>
       </item>
       <item>
        <widget class="Line" name="line_5">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -295,7 +295,7 @@ text</string>
          <string>Ctrl+Ins</string>
         </property>
         <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+         <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
         </property>
        </widget>
       </item>
@@ -341,7 +341,7 @@ file</string>
          <string>Ins</string>
         </property>
         <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+         <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
         </property>
        </widget>
       </item>
@@ -387,14 +387,14 @@ special</string>
          <string>Ins</string>
         </property>
         <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+         <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
         </property>
        </widget>
       </item>
       <item>
        <widget class="Line" name="line">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -435,7 +435,7 @@ block</string>
          </size>
         </property>
         <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+         <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
         </property>
        </widget>
       </item>
@@ -476,7 +476,7 @@ block</string>
          </size>
         </property>
         <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+         <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
         </property>
        </widget>
       </item>
@@ -517,14 +517,14 @@ information</string>
          </size>
         </property>
         <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+         <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
         </property>
        </widget>
       </item>
       <item>
        <widget class="Line" name="line_6">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -565,14 +565,14 @@ model</string>
          </size>
         </property>
         <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
+         <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
         </property>
        </widget>
       </item>
       <item>
        <spacer name="horizontalSpacer_6">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -594,10 +594,10 @@ model</string>
       </sizepolicy>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Sunken</enum>
+      <enum>QFrame::Shadow::Sunken</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_12">
       <property name="spacing">
@@ -627,7 +627,7 @@ model</string>
          <string>Slide name:</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -647,7 +647,7 @@ model</string>
       <item>
        <widget class="Line" name="line_2">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -657,7 +657,7 @@ model</string>
          <string>Total duration :</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -740,13 +740,13 @@ Remark :
 - The order of the shots can be changed by using Drag &amp; Drop.</string>
          </property>
          <property name="verticalScrollBarPolicy">
-          <enum>Qt::ScrollBarAlwaysOff</enum>
+          <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
          </property>
          <property name="horizontalScrollBarPolicy">
-          <enum>Qt::ScrollBarAlwaysOn</enum>
+          <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
          </property>
          <property name="editTriggers">
-          <set>QAbstractItemView::NoEditTriggers</set>
+          <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
          </property>
          <property name="tabKeyNavigation">
           <bool>true</bool>
@@ -758,16 +758,16 @@ Remark :
           <bool>false</bool>
          </property>
          <property name="dragDropMode">
-          <enum>QAbstractItemView::InternalMove</enum>
+          <enum>QAbstractItemView::DragDropMode::InternalMove</enum>
          </property>
          <property name="defaultDropAction">
-          <enum>Qt::LinkAction</enum>
+          <enum>Qt::DropAction::LinkAction</enum>
          </property>
          <property name="selectionMode">
-          <enum>QAbstractItemView::SingleSelection</enum>
+          <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
          </property>
          <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectColumns</enum>
+          <enum>QAbstractItemView::SelectionBehavior::SelectColumns</enum>
          </property>
          <property name="wordWrap">
           <bool>false</bool>
@@ -806,10 +806,10 @@ Remark :
           </sizepolicy>
          </property>
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::Shape::StyledPanel</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Sunken</enum>
+          <enum>QFrame::Shadow::Sunken</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_17">
           <property name="spacing">
@@ -833,7 +833,7 @@ Remark :
              <string>Shot duration :</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -869,7 +869,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
              </time>
             </property>
             <property name="currentSection">
-             <enum>QDateTimeEdit::SecondSection</enum>
+             <enum>QDateTimeEdit::Section::SecondSection</enum>
             </property>
             <property name="displayFormat">
              <string>HH:mm:ss.zzz</string>
@@ -891,7 +891,6 @@ If you specify a duration lower than the minimum calculated duration for the sho
              <font>
               <family>Sans Serif</family>
               <pointsize>9</pointsize>
-              <weight>50</weight>
               <italic>true</italic>
               <bold>false</bold>
              </font>
@@ -950,7 +949,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
          <item>
           <spacer name="horizontalSpacer_4">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -1068,7 +1067,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
          <item>
           <spacer name="horizontalSpacer_5">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -1132,7 +1131,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
          <item>
           <spacer name="horizontalSpacer_7">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -1191,7 +1190,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
            </size>
           </property>
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <widget class="QWidget" name="widget_2" native="true">
            <property name="sizePolicy">
@@ -1234,13 +1233,13 @@ If you specify a duration lower than the minimum calculated duration for the sho
                <number>1</number>
               </property>
               <property name="verticalScrollBarPolicy">
-               <enum>Qt::ScrollBarAlwaysOn</enum>
+               <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
               </property>
               <property name="horizontalScrollBarPolicy">
-               <enum>Qt::ScrollBarAlwaysOff</enum>
+               <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
               </property>
               <property name="editTriggers">
-               <set>QAbstractItemView::NoEditTriggers</set>
+               <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
               </property>
               <property name="showDropIndicator" stdset="0">
                <bool>true</bool>
@@ -1252,16 +1251,16 @@ If you specify a duration lower than the minimum calculated duration for the sho
                <bool>false</bool>
               </property>
               <property name="dragDropMode">
-               <enum>QAbstractItemView::DropOnly</enum>
+               <enum>QAbstractItemView::DragDropMode::DropOnly</enum>
               </property>
               <property name="defaultDropAction">
-               <enum>Qt::LinkAction</enum>
+               <enum>Qt::DropAction::LinkAction</enum>
               </property>
               <property name="selectionMode">
-               <enum>QAbstractItemView::ExtendedSelection</enum>
+               <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
               </property>
               <property name="selectionBehavior">
-               <enum>QAbstractItemView::SelectRows</enum>
+               <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
               </property>
               <property name="wordWrap">
                <bool>false</bool>
@@ -1295,10 +1294,10 @@ If you specify a duration lower than the minimum calculated duration for the sho
             </sizepolicy>
            </property>
            <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
+            <enum>QFrame::Shape::StyledPanel</enum>
            </property>
            <property name="frameShadow">
-            <enum>QFrame::Sunken</enum>
+            <enum>QFrame::Shadow::Sunken</enum>
            </property>
            <property name="lineWidth">
             <number>1</number>
@@ -1307,13 +1306,13 @@ If you specify a duration lower than the minimum calculated duration for the sho
             <number>1</number>
            </property>
            <property name="verticalScrollBarPolicy">
-            <enum>Qt::ScrollBarAlwaysOn</enum>
+            <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
            </property>
            <property name="horizontalScrollBarPolicy">
-            <enum>Qt::ScrollBarAlwaysOff</enum>
+            <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
            </property>
            <property name="sizeAdjustPolicy">
-            <enum>QAbstractScrollArea::AdjustToContents</enum>
+            <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -1322,9 +1321,9 @@ If you specify a duration lower than the minimum calculated duration for the sho
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>-20</y>
-              <width>377</width>
-              <height>1056</height>
+              <y>0</y>
+              <width>381</width>
+              <height>1088</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -1392,7 +1391,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/inheritance_down_unlock.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1451,7 +1450,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/Geometry.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1508,7 +1507,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/Geometry.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1528,7 +1527,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_X.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1552,7 +1551,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -1580,7 +1579,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_Y.png</pixmap>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                  </property>
                 </widget>
                </item>
@@ -1599,7 +1598,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -1623,7 +1622,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_Width.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1659,7 +1658,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -1687,7 +1686,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_Height.png</pixmap>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                  </property>
                 </widget>
                </item>
@@ -1706,7 +1705,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -1730,7 +1729,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/RotateZ.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1769,7 +1768,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <number>360</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -1785,7 +1784,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <string>Define the angle of rotation about the z-axis (expressed in degrees)</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="minimum">
                   <number>-360</number>
@@ -1826,7 +1825,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/RotateY.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1865,7 +1864,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <number>360</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -1881,7 +1880,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <string>Define the angle of rotation about the x-axis (expressed in degrees)</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="minimum">
                   <number>-360</number>
@@ -1916,7 +1915,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/RotateX.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1955,7 +1954,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <number>360</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -1971,7 +1970,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <string>Define the angle of rotation about the y-axis (expressed in degrees)</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="minimum">
                   <number>-360</number>
@@ -2003,20 +2002,19 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <font>
                  <family>Sans Serif</family>
                  <pointsize>9</pointsize>
-                 <weight>50</weight>
                  <italic>true</italic>
                  <bold>false</bold>
                  <underline>true</underline>
                 </font>
                </property>
                <property name="frameShadow">
-                <enum>QFrame::Plain</enum>
+                <enum>QFrame::Shadow::Plain</enum>
                </property>
                <property name="text">
                 <string>Block shape (common to all shots):</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
                </property>
               </widget>
              </item>
@@ -2054,7 +2052,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                    <normaloff>:/img/db_menu.png</normaloff>:/img/db_menu.png</iconset>
                  </property>
                  <property name="arrowType">
-                  <enum>Qt::NoArrow</enum>
+                  <enum>Qt::ArrowType::NoArrow</enum>
                  </property>
                 </widget>
                </item>
@@ -2082,7 +2080,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>Shape :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2128,7 +2126,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>Clip-Art :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2168,7 +2166,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>Opacity :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2191,7 +2189,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>Border :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2229,12 +2227,12 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="cColorComboBox" name="PenColorCB">
+                <widget class="ColorComboBox" name="PenColorCB">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -2251,7 +2249,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <string>Select the color of the line to be used to draw the border</string>
                  </property>
                  <property name="sizeAdjustPolicy">
-                  <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
+                  <enum>QComboBox::SizeAdjustPolicy::AdjustToMinimumContentsLengthWithIcon</enum>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -2287,7 +2285,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
              <item row="29" column="0">
               <widget class="QCheckBox" name="cm3DFrame">
                <property name="layoutDirection">
-                <enum>Qt::RightToLeft</enum>
+                <enum>Qt::LayoutDirection::RightToLeft</enum>
                </property>
                <property name="text">
                 <string>3D-Frame</string>
@@ -2300,7 +2298,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>Shadow :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2348,12 +2346,12 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <string>Define the distance between the block and its shadow</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="cCColorComboBox" name="ShadowColorCB">
+                <widget class="ColorComboBox" name="ShadowColorCB">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -2383,7 +2381,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
              <item row="33" column="0">
               <widget class="QCheckBox" name="cmUseMask">
                <property name="layoutDirection">
-                <enum>Qt::RightToLeft</enum>
+                <enum>Qt::LayoutDirection::RightToLeft</enum>
                </property>
                <property name="text">
                 <string>Shape as mask</string>
@@ -2393,7 +2391,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
              <item row="33" column="1">
               <widget class="QCheckBox" name="cmInvertMask">
                <property name="layoutDirection">
-                <enum>Qt::RightToLeft</enum>
+                <enum>Qt::LayoutDirection::RightToLeft</enum>
                </property>
                <property name="text">
                 <string>inverted Mask</string>
@@ -2424,7 +2422,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_X.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2454,7 +2452,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_Y.png</pixmap>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                  </property>
                 </widget>
                </item>
@@ -2472,7 +2470,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_Width.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2514,7 +2512,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/RotateZ.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2538,7 +2536,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <number>180</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -2577,7 +2575,6 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <font>
                  <family>Sans Serif</family>
                  <pointsize>9</pointsize>
-                 <weight>50</weight>
                  <italic>true</italic>
                  <bold>false</bold>
                  <underline>true</underline>
@@ -2587,7 +2584,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;Animation settings:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
                </property>
               </widget>
              </item>
@@ -2597,7 +2594,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>Speed wave :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2611,7 +2608,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                         </string>
                </property>
                <property name="sizeAdjustPolicy">
-                <enum>QComboBox::AdjustToContents</enum>
+                <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
                </property>
               </widget>
              </item>
@@ -2621,7 +2618,6 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <font>
                  <family>Sans Serif</family>
                  <pointsize>9</pointsize>
-                 <weight>50</weight>
                  <italic>true</italic>
                  <bold>false</bold>
                  <underline>true</underline>
@@ -2631,7 +2627,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;Text animation :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
                </property>
               </widget>
              </item>
@@ -2641,7 +2637,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>Zoom :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2689,7 +2685,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <number>100</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -2711,7 +2707,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -2755,7 +2751,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/ScrollX.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2803,7 +2799,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <number>0</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -2825,7 +2821,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -2901,7 +2897,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <number>0</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -2923,7 +2919,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -2964,7 +2960,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/ScrollY.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2974,7 +2970,6 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <font>
                  <family>Sans Serif</family>
                  <pointsize>9</pointsize>
-                 <weight>50</weight>
                  <italic>true</italic>
                  <bold>false</bold>
                  <underline>true</underline>
@@ -2984,7 +2979,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;Block animation :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
                </property>
               </widget>
              </item>
@@ -2994,7 +2989,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>Type :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -3020,7 +3015,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/RotateZ.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -3069,7 +3064,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <number>0</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -3089,7 +3084,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="minimum">
                   <number>-20</number>
@@ -3127,7 +3122,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/RotateY.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -3176,7 +3171,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <number>0</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -3196,7 +3191,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="minimum">
                   <number>-20</number>
@@ -3234,7 +3229,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/RotateX.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -3283,7 +3278,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                   <number>0</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -3303,7 +3298,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                               </string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="minimum">
                   <number>-20</number>
@@ -3338,7 +3333,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
                 <string>Dissolve :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -3356,7 +3351,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
              <item row="55" column="1">
               <spacer name="myVerticalSpacer">
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -3391,7 +3386,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
       </size>
      </property>
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -3415,7 +3410,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
      <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -3442,7 +3437,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -3497,7 +3492,7 @@ If you specify a duration lower than the minimum calculated duration for the sho
      <item>
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -4054,9 +4049,9 @@ Note: Hidden video blocks are automatically paused</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>cCColorComboBox</class>
+   <class>ColorComboBox</class>
    <extends>QComboBox</extends>
-   <header>../ffDiaporama_lib/cColorComboBox.h</header>
+   <header>colorcombobox.h</header>
   </customwidget>
   <customwidget>
    <class>cCShapeComboBox</class>
@@ -4078,11 +4073,6 @@ Note: Hidden video blocks are automatically paused</string>
    <class>cCTexteFrameComboBox</class>
    <extends>QComboBox</extends>
    <header>../ffDiaporama_lib/cTexteFrameComboBox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>cColorComboBox</class>
-   <extends>QComboBox</extends>
-   <header>../ffDiaporama_lib/cColorComboBox.h</header>
   </customwidget>
   <customwidget>
    <class>cQDateTimeEdit</class>

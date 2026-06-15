@@ -149,7 +149,7 @@ void wgt_QEditVideo::setAudioOutput()
    //QAudioDevice deviceInfo = m_devices->defaultAudioOutput();
    m_audioOutput.reset(new QAudioSink(defaultDeviceInfo, format));
    m_audioOutput->setBufferSize(MixedMusic.NbrPacketForFPS * MixedMusic.SoundPacketSize * BUFFERING_NBR_AUDIO_FRAME);
-   m_audioOutput->start();
+   audio_outputDevice = m_audioOutput->start();
    m_audioOutput->suspend();
    AudioPlayed = 0;
 
@@ -219,7 +219,8 @@ void wgt_QEditVideo::DoInitDialog() {
       ui->VideoStartLabel->setText("");
 
     m_audioOutput->setBufferSize(MixedMusic.NbrPacketForFPS*MixedMusic.SoundPacketSize*BUFFERING_NBR_AUDIO_FRAME);
-    audio_outputDevice=m_audioOutput->start();
+    if (audio_outputDevice == nullptr)
+        audio_outputDevice = m_audioOutput->start();
     AudioPlayed=0;
     #if QT_VERSION >= 0x050000
     m_audioOutput->setVolume(ApplicationConfig->PreviewSoundVolume);
@@ -516,7 +517,8 @@ void wgt_QEditVideo::SetPlayerToPlay(bool force)
    {
       case QAudio::SuspendedState: m_audioOutput->resume();
       break;
-      case QAudio::StoppedState:   audio_outputDevice = m_audioOutput->start();
+      case QAudio::StoppedState:   
+         audio_outputDevice = m_audioOutput->start();
          AudioPlayed = 0;
 #if QT_VERSION >= 0x050000
          m_audioOutput->setVolume(ApplicationConfig->PreviewSoundVolume);

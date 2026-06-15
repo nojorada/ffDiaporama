@@ -102,7 +102,7 @@
          </sizepolicy>
         </property>
         <property name="frameShape">
-         <enum>QFrame::Box</enum>
+         <enum>QFrame::Shape::Box</enum>
         </property>
         <property name="text">
          <string notr="true"/>
@@ -118,17 +118,17 @@
             <string notr="true"/>
            </property>
            <property name="pixmap">
-            <pixmap>:/img/color.png</pixmap>
+            <pixmap resource="../RSCffDiaporama.qrc">:/img/color.png</pixmap>
            </property>
            <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
            </property>
           </widget>
          </item>
          <item row="7" column="1">
           <spacer name="verticalSpacer">
            <property name="orientation">
-            <enum>Qt::Vertical</enum>
+            <enum>Qt::Orientation::Vertical</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -144,10 +144,10 @@
             <string notr="true"/>
            </property>
            <property name="pixmap">
-            <pixmap>:/img/color_fill.png</pixmap>
+            <pixmap resource="../RSCffDiaporama.qrc">:/img/color_fill.png</pixmap>
            </property>
            <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -226,13 +226,13 @@
             <string notr="true"/>
            </property>
            <property name="pixmap">
-            <pixmap>:/img/object_image.png</pixmap>
+            <pixmap resource="../RSCffDiaporama.qrc">:/img/object_image.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
            </property>
            <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -283,13 +283,13 @@
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap>:/img/object_image.png</pixmap>
+              <pixmap resource="../RSCffDiaporama.qrc">:/img/object_image.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+              <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTop|Qt::AlignmentFlag::AlignTrailing</set>
              </property>
             </widget>
            </item>
@@ -308,10 +308,10 @@
             <string notr="true"/>
            </property>
            <property name="pixmap">
-            <pixmap>:/img/Distance.png</pixmap>
+            <pixmap resource="../RSCffDiaporama.qrc">:/img/Distance.png</pixmap>
            </property>
            <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -357,7 +357,7 @@
               <string notr="true"/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="../RSCffDiaporama.qrc">
                <normaloff>:/img/EditImage.png</normaloff>:/img/EditImage.png</iconset>
              </property>
             </widget>
@@ -442,7 +442,7 @@
               <number>10</number>
              </property>
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -501,7 +501,7 @@
             <number>0</number>
            </property>
            <item>
-            <widget class="cCColorComboBox" name="FirstColorCombo">
+            <widget class="ColorComboBox" name="FirstColorCombo">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -510,13 +510,13 @@
              </property>
              <property name="minimumSize">
               <size>
-               <width>48</width>
+               <width>60</width>
                <height>24</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>48</width>
+               <width>60</width>
                <height>24</height>
               </size>
              </property>
@@ -526,7 +526,7 @@
             </widget>
            </item>
            <item>
-            <widget class="cCColorComboBox" name="IntermColorCombo">
+            <widget class="ColorComboBox" name="IntermColorCombo">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -535,13 +535,13 @@
              </property>
              <property name="minimumSize">
               <size>
-               <width>48</width>
+               <width>60</width>
                <height>24</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>48</width>
+               <width>60</width>
                <height>24</height>
               </size>
              </property>
@@ -551,7 +551,7 @@
             </widget>
            </item>
            <item>
-            <widget class="cCColorComboBox" name="FinalColorCombo">
+            <widget class="ColorComboBox" name="FinalColorCombo">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -560,13 +560,13 @@
              </property>
              <property name="minimumSize">
               <size>
-               <width>48</width>
+               <width>60</width>
                <height>24</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>48</width>
+               <width>60</width>
                <height>24</height>
               </size>
              </property>
@@ -648,7 +648,7 @@
               <string notr="true">...</string>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="../RSCffDiaporama.qrc">
                <normaloff>:/img/FolderOpen.png</normaloff>:/img/FolderOpen.png</iconset>
              </property>
             </widget>
@@ -670,7 +670,7 @@
       </sizepolicy>
      </property>
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -682,7 +682,7 @@
      <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -701,7 +701,7 @@
         <string>&amp;Ok</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="../RSCffDiaporama.qrc">
          <normaloff>:/img/action_ok.png</normaloff>:/img/action_ok.png</iconset>
        </property>
       </widget>
@@ -740,7 +740,7 @@
         <string>Undo</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="../RSCffDiaporama.qrc">
          <normaloff>:/img/undo24.png</normaloff>:/img/undo24.png</iconset>
        </property>
        <property name="shortcut">
@@ -757,7 +757,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="../RSCffDiaporama.qrc">
          <normaloff>:/img/action_cancel.png</normaloff>:/img/action_cancel.png</iconset>
        </property>
       </widget>
@@ -771,7 +771,7 @@
         <string>&amp;Help</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="../RSCffDiaporama.qrc">
          <normaloff>:/img/help.png</normaloff>:/img/help.png</iconset>
        </property>
       </widget>
@@ -782,11 +782,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>cCColorComboBox</class>
-   <extends>QComboBox</extends>
-   <header>../ffDiaporama_lib/cColorComboBox.h</header>
-  </customwidget>
-  <customwidget>
    <class>cCGrdOrientationComboBox</class>
    <extends>QComboBox</extends>
    <header>../ffDiaporama_lib/cGrdOrientationComboBox.h</header>
@@ -796,7 +791,14 @@
    <extends>QComboBox</extends>
    <header>../ffDiaporama_lib/cBackgroundComboBox.h</header>
   </customwidget>
+  <customwidget>
+   <class>ColorComboBox</class>
+   <extends>QComboBox</extends>
+   <header>colorcombobox.h</header>
+  </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../RSCffDiaporama.qrc"/>
+ </resources>
  <connections/>
 </ui>

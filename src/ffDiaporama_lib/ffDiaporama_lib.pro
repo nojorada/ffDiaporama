@@ -36,7 +36,7 @@ greaterThan(QT_MAJOR_VERSION,4) {
     CONFIG += help
 }
 
-QMAKE_CXXFLAGS_WARN_ON += -Wno-overloaded-virtual
+#QMAKE_CXXFLAGS_WARN_ON += -Wno-overloaded-virtual
 
 QMAKE_STRIP = echo
 APPFOLDER   = ffDiaporama
@@ -51,7 +51,6 @@ SOURCES  += BasicDefines.cpp \
             cBaseAppConfig.cpp \
             cBaseBrushDefinition.cpp \
             cBrushComboBox.cpp \
-            cColorComboBox.cpp \
             cCustomIcon.cpp \
             cDatabase.cpp \
             cGrdOrientationComboBox.cpp \
@@ -65,6 +64,8 @@ SOURCES  += BasicDefines.cpp \
             QCustomComboBox.cpp \
             QCustomHorizSplitter.cpp \
             Shape.cpp \
+            colorcombobox.cpp \
+            coloritemdelegate.cpp \
             ocv.cpp \
             SSE_Check.cpp
 
@@ -73,7 +74,6 @@ HEADERS  += BasicDefines.h \
             cBaseAppConfig.h \
             cBaseBrushDefinition.h \
             cBrushComboBox.h \
-            cColorComboBox.h \
             cCustomIcon.h \
             cDatabase.h \
             cGrdOrientationComboBox.h \
@@ -87,6 +87,8 @@ HEADERS  += BasicDefines.h \
             QCustomComboBox.h \
             QCustomHorizSplitter.h \
             Shape.h \
+            colorcombobox.h \
+            coloritemdelegate.h \
             ocv.h \
             SSE_Check.h
 

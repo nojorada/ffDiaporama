@@ -1,4 +1,4 @@
-/* ======================================================================
+﻿/* ======================================================================
     This file is part of ffDiaporama
     ffDiaporama is a tool to make diaporama as video
     Copyright (C) 2011-2014 Dominique Levray <domledom@laposte.net>
@@ -21,7 +21,7 @@
 #include "cShotComposer.h"
 #include "cTexteFrameComboBox.h"
 #include "CustomCtrl/cCShapeComboBox.h"
-#include "cColorComboBox.h"
+#include "ColorComboBox.h"
 
 #include "DlgInfoFile/DlgInfoFile.h"
 #include "DlgText/DlgTextEdit.h"
@@ -464,8 +464,8 @@ void cShotComposer::RefreshControls(bool UpdateInteractiveZone) {
       GETCOMBOBOX("OpacityCB")->setCurrentIndex(CurrentCompoObject->Opacity);
       GETCOMBOBOX("ShadowEffectCB")->setCurrentIndex(CurrentCompoObject->FormShadow);
       GETSPINBOX("ShadowEffectED")->setValue(int(CurrentCompoObject->FormShadowDistance));
-      ((cColorComboBox *)GETCOMBOBOX("PenColorCB"))->SetCurrentColor(CurrentCompoObject->PenColor);
-      ((cCColorComboBox *)GETCOMBOBOX("ShadowColorCB"))->SetCurrentColor(&CurrentCompoObject->FormShadowColor);
+      GETCOLORCOMBOBOX("PenColorCB")->setCurrentColor(CurrentCompoObject->PenColor);
+      GETCOLORCOMBOBOX("ShadowColorCB")->setCurrentColor(CurrentCompoObject->FormShadowColor);
 
       for (int i = 0; i < GETCOMBOBOX("PenStyleCB")->count(); i++)
          if (GETCOMBOBOX("PenStyleCB")->itemData(i).toInt() == CurrentCompoObject->PenStyle)
@@ -544,15 +544,15 @@ void cShotComposer::RefreshControls(bool UpdateInteractiveZone) {
       // Shape part
       GETUI("BlockShapeStyleBT")->setEnabled(false);
       GETUI("BlockShapeStyleED")->setEnabled(false);
-      GETUI("BackgroundFormCB")->setEnabled(false);         GETCOMBOBOX("BackgroundFormCB")->setCurrentIndex(-1);
+      GETUI("BackgroundFormCB")->setEnabled(false);  GETCOMBOBOX("BackgroundFormCB")->setCurrentIndex(-1);
       GETUI("PenSizeEd")->setEnabled(false);         GETSPINBOX("PenSizeEd")->setValue(0);
 
-      GETUI("PenColorCB")->setEnabled(false);         ((cColorComboBox *)GETCOMBOBOX("PenColorCB"))->SetCurrentColor(NULL);
+      GETUI("PenColorCB")->setEnabled(false);        GETCOLORCOMBOBOX("PenColorCB")->setCurrentColor(NULL);
       GETUI("PenStyleCB")->setEnabled(false);
       GETUI("OpacityCB")->setEnabled(false);         GETCOMBOBOX("OpacityCB")->setCurrentIndex(-1);
-      GETUI("ShadowEffectCB")->setEnabled(false);         GETCOMBOBOX("ShadowEffectCB")->setCurrentIndex(-1);
-      GETUI("ShadowEffectED")->setEnabled(false);         GETSPINBOX("ShadowEffectED")->setValue(0);
-      GETUI("ShadowColorCB")->setEnabled(false);         ((cCColorComboBox *)GETCOMBOBOX("ShadowColorCB"))->SetCurrentColor(NULL);
+      GETUI("ShadowEffectCB")->setEnabled(false);    GETCOMBOBOX("ShadowEffectCB")->setCurrentIndex(-1);
+      GETUI("ShadowEffectED")->setEnabled(false);    GETSPINBOX("ShadowEffectED")->setValue(0);
+      GETUI("ShadowColorCB")->setEnabled(false);     GETCOLORCOMBOBOX("ShadowColorCB")->setCurrentColor(NULL);
       // mask Values
       setMaskingEnabled(false);
       //GETCOMBOBOX("cbMaskShape")->setCurrentIndex(-1);
@@ -942,7 +942,7 @@ void cShotComposer::s_BlockSettings_ShapePenColor(int)
    if (!ISBLOCKVALIDEVISIBLE()) 
       return;
    AppendPartialUndo(UNDOACTION_FULL_SLIDE, "PenColorCB", false);
-   CurrentCompoObject->PenColor = ((cColorComboBox *)GETCOMBOBOX("PenColorCB"))->GetCurrentColor();
+   CurrentCompoObject->PenColor = GETCOLORCOMBOBOX("PenColorCB")->currentColor();
    ApplyToContexte(true);
 }
 
@@ -974,7 +974,7 @@ void cShotComposer::s_BlockSettings_ShapeShadowColor(int)
    if (!ISBLOCKVALIDEVISIBLE()) 
       return;
    AppendPartialUndo(UNDOACTION_FULL_SLIDE, "ShadowColorCB", false);
-   CurrentCompoObject->FormShadowColor = ((cCColorComboBox *)GETCOMBOBOX("ShadowColorCB"))->GetCurrentColor();
+   CurrentCompoObject->FormShadowColor = GETCOLORCOMBOBOX("ShadowColorCB")->currentColor();
    ApplyToContexte(true);
 }
 
