@@ -115,6 +115,7 @@ QString ColorComboBox::currentColor() const
     return idx.data(Qt::UserRole).value<QColor>().name(QColor::HexArgb);
 }
 
+/*--------------------------------------------------------------------------------
 void ColorComboBox::setCurrentColor(const QColor &color)
 {
     const QString colorName = color.name(QColor::HexArgb);
@@ -125,6 +126,7 @@ void ColorComboBox::setCurrentColor(const QColor &color)
     update();
     return;
 }
+----------------------------------------------------------------------------------*/
 
 void ColorComboBox::setCurrentColor(const QString &colorName)
 {

@@ -37,7 +37,7 @@ public:
     explicit ColorComboBox(QWidget *parent = nullptr);
 
     QString currentColor() const;
-    void setCurrentColor(const QColor &color);
+//    void setCurrentColor(const QColor &color);
     void setCurrentColor(const QString &color);
 
 protected:
