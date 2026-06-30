@@ -151,7 +151,8 @@ void DlgTextEdit::DoInitDialog()
     connect(ui->FontColorCombo,SIGNAL(currentIndexChanged(int)),this,SLOT(s_ChIndexFontColorCombo(int)));
     connect(ui->StyleShadowColorCombo,SIGNAL(currentIndexChanged(int)),this,SLOT(s_ChIndexFontShadowColorCombo(int)));
     connect(ui->fontStyleCB,SIGNAL(currentFontChanged(QFont)),this,SLOT(s_ChangeFont(QFont)));
-    connect(ui->fontSize,SIGNAL(currentIndexChanged(QString)),this,SLOT(s_ChangeSizeFont(QString)));
+//  connect(ui->fontSize,SIGNAL(currentIndexChanged(QString)),this,SLOT(s_ChangeSizeFont(QString)));
+    connect(ui->fontSize,SIGNAL(currentTextChanged(QString)),this,SLOT(s_ChangeSizeFont(QString)));
 
     connect(ui->bold,SIGNAL(released()),this,SLOT(s_SetBold()));
     connect(ui->Italic,SIGNAL(released()),this,SLOT(s_SetItalic()));
