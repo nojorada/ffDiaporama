@@ -21,7 +21,7 @@
 #include "cShotComposer.h"
 #include "cTexteFrameComboBox.h"
 #include "CustomCtrl/cCShapeComboBox.h"
-#include "ColorComboBox.h"
+#include "colorcombobox.h"
 
 #include "DlgInfoFile/DlgInfoFile.h"
 #include "DlgText/DlgTextEdit.h"
