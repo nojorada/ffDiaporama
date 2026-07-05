@@ -1,4 +1,4 @@
-/* ======================================================================
+﻿/* ======================================================================
     This file is part of ffDiaporama
     ffDiaporama is a tool to make diaporama as video
     Copyright (C) 2011-2014 Dominique Levray <domledom@laposte.net>
@@ -139,9 +139,9 @@ void wgt_QGMapsMap::RefreshControls() {
         ui->PointFormCB->setCurrentIndex(CurLocation->MarkerPointForm);
         ui->MarkerFormCB->setCurrentIndex(CurLocation->MarkerForm);
         ui->MarkerCompoCB->setCurrentIndex(CurLocation->MarkerCompo);
-        ui->LineColorCB->SetCurrentColor(&CurMarker->LineColor);
-        ui->TextColorCB->SetCurrentColor(&CurMarker->TextColor);
-        ui->MarkerColorCB->SetCurrentColor(&CurMarker->MarkerColor);
+        ui->LineColorCB->setCurrentColor(CurMarker->LineColor);
+        ui->TextColorCB->setCurrentColor(CurMarker->TextColor);
+        ui->MarkerColorCB->setCurrentColor(CurMarker->MarkerColor);
         ui->VisibilityCB->setCurrentIndex(CurMarker->Visibility);
         ui->DistanceCB->setCurrentIndex(CurLocation->Distance);
     }
@@ -433,14 +433,15 @@ void wgt_QGMapsMap::DoubleClickedLocation(QModelIndex) {
 //====================================================================================================================
 
 void wgt_QGMapsMap::LineColorChanged(int) {
-    if ((StopMaj)||(ui->LineColorCB->IsPopupOpen)) return;
+    if ((StopMaj)||(ui->LineColorCB->view()->isVisible())) return;
     int Index=GetCurLocationIndex();
     if ((Index<0)||(Index>=CurrentMap->locations.count())) return;
     ParentDialog->AppendPartialUndo(DlgImageCorrection::UNDOACTION_GMAPSMAPPART,ui->LineColorCB,false,this,false);
-    CurrentBrush->Markers[Index].LineColor=ui->LineColorCB->GetCurrentColor();
-    if (!ui->MarkerColorCB->IsPopupOpen) {
+    CurrentBrush->Markers[Index].LineColor=ui->LineColorCB->currentColor();
+    if (!ui->MarkerColorCB->view()->isVisible()) 
+    {
         StopMaj=true;
-        ui->LineColorCB->SetCurrentColor(&CurrentBrush->Markers[Index].LineColor);
+        ui->LineColorCB->setCurrentColor(CurrentBrush->Markers[Index].LineColor);
         StopMaj=false;
         ResetDisplayMap();
         ui->LocationTable->setUpdatesEnabled(false);
@@ -455,10 +456,10 @@ void wgt_QGMapsMap::MarkerColorChanged(int) {
     int Index=GetCurLocationIndex();
     if ((Index<0)||(Index>=CurrentMap->locations.count())) return;
     ParentDialog->AppendPartialUndo(DlgImageCorrection::UNDOACTION_GMAPSMAPPART,ui->MarkerColorCB,false,this,false);
-    CurrentBrush->Markers[Index].MarkerColor=ui->MarkerColorCB->GetCurrentColor();
-    if (!ui->MarkerColorCB->IsPopupOpen) {
+    CurrentBrush->Markers[Index].MarkerColor=ui->MarkerColorCB->currentColor();
+    if (!ui->MarkerColorCB->view()->isVisible()) {
         StopMaj=true;
-        ui->MarkerColorCB->SetCurrentColor(&CurrentBrush->Markers[Index].MarkerColor);
+        ui->MarkerColorCB->setCurrentColor(CurrentBrush->Markers[Index].MarkerColor);
         StopMaj=false;
         ResetDisplayMap();
         ui->LocationTable->setUpdatesEnabled(false);
@@ -473,10 +474,11 @@ void wgt_QGMapsMap::TextColorChanged(int) {
     int Index=GetCurLocationIndex();    
     if ((Index<0)||(Index>=CurrentMap->locations.count())) return;
     ParentDialog->AppendPartialUndo(DlgImageCorrection::UNDOACTION_GMAPSMAPPART,ui->TextColorCB,false,this,false);
-    CurrentBrush->Markers[Index].TextColor=ui->TextColorCB->GetCurrentColor();
-    if (!ui->MarkerColorCB->IsPopupOpen) {
+    CurrentBrush->Markers[Index].TextColor=ui->TextColorCB->currentColor();
+    if (!ui->MarkerColorCB->view()->isVisible()) 
+    {
         StopMaj=true;
-        ui->TextColorCB->SetCurrentColor(&CurrentBrush->Markers[Index].TextColor);
+        ui->TextColorCB->setCurrentColor(CurrentBrush->Markers[Index].TextColor);
         StopMaj=false;
         ResetDisplayMap();
         ui->LocationTable->setUpdatesEnabled(false);

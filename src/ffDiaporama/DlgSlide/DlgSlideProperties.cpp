@@ -330,7 +330,9 @@ void DlgSlideProperties::DoInitDialog()
    wheelButtons->addButton(ui->tbWM_Zoom, cInteractiveZone::eZoomInOut);
    wheelButtons->addButton(ui->tbWM_SlideHorizontal, cInteractiveZone::eSlideHorizontal);
    wheelButtons->addButton(ui->tbWM_SlideVertical, cInteractiveZone::eSlideVertical);
+// connect( wheelButtons, SIGNAL(idClicked(int)), this,SLOT(setWheelMode(int)));
    connect( wheelButtons, SIGNAL(buttonClicked(int)), this,SLOT(setWheelMode(int)));
+
 }
 
 //====================================================================================================================

@@ -1,4 +1,4 @@
-/* ======================================================================
+﻿/* ======================================================================
     This file is part of ffDiaporama
     ffDiaporama is a tool to make diaporama as video
     Copyright (C) 2011-2014 Dominique Levray <domledom@laposte.net>
@@ -151,7 +151,8 @@ void DlgTextEdit::DoInitDialog()
     connect(ui->FontColorCombo,SIGNAL(currentIndexChanged(int)),this,SLOT(s_ChIndexFontColorCombo(int)));
     connect(ui->StyleShadowColorCombo,SIGNAL(currentIndexChanged(int)),this,SLOT(s_ChIndexFontShadowColorCombo(int)));
     connect(ui->fontStyleCB,SIGNAL(currentFontChanged(QFont)),this,SLOT(s_ChangeFont(QFont)));
-    connect(ui->fontSize,SIGNAL(currentIndexChanged(QString)),this,SLOT(s_ChangeSizeFont(QString)));
+//  connect(ui->fontSize,SIGNAL(currentIndexChanged(QString)),this,SLOT(s_ChangeSizeFont(QString)));
+    connect(ui->fontSize,SIGNAL(currentTextChanged(QString)),this,SLOT(s_ChangeSizeFont(QString)));
 
     connect(ui->bold,SIGNAL(released()),this,SLOT(s_SetBold()));
     connect(ui->Italic,SIGNAL(released()),this,SLOT(s_SetItalic()));
@@ -287,7 +288,7 @@ void DlgTextEdit::s_cursorPositionChanged()
 
     ui->fontStyleCB->   setCurrentIndex(ui->fontStyleCB->findText(QString(TCF.fontFamily())));
     ui->fontSize->      setCurrentIndex(ui->fontSize->findText(QString("%1").arg(TCF.fontPointSize())));
-    ui->FontColorCombo->SetCurrentColor(/*&*/CurrentTextItem->tParams.FontColor);
+    ui->FontColorCombo->setCurrentColor(CurrentTextItem->tParams.FontColor);
 
     ui->textLeft->  setChecked((Alignment & Qt::AlignLeft)!=0);         ui->textLeft->  setDown((Alignment & Qt::AlignLeft)!=0);
     ui->textCenter->setChecked((Alignment & Qt::AlignHCenter)!=0);      ui->textCenter->setDown((Alignment & Qt::AlignHCenter)!=0);
@@ -340,7 +341,7 @@ void DlgTextEdit::RefreshControls()
    ui->textVCenter->setChecked(CurrentTextItem->tParams.VAlign==1);            ui->textVCenter->setDown(CurrentTextItem->tParams.VAlign==1);
    ui->textBottom->setChecked(CurrentTextItem->tParams.VAlign==2);             ui->textBottom->setDown(CurrentTextItem->tParams.VAlign==2);
    if (CurrentTextItem->tParams.StyleText!=ui->fontEffectCB->currentIndex())   ui->fontEffectCB->setCurrentIndex(CurrentTextItem->tParams.StyleText);
-   ui->StyleShadowColorCombo->SetCurrentColor(/*&*/CurrentTextItem->tParams.FontShadowColor);
+   ui->StyleShadowColorCombo->setCurrentColor(/*&*/CurrentTextItem->tParams.FontShadowColor);
    ui->StyleShadowColorCombo->setEnabled(CurrentTextItem->tParams.StyleText!=0);
    //ui->fontEffectCB->view()->setFixedWidth(250);
    //ui->TextStyleED->setText(StyleTextCollection->GetStyleName(CurrentTextItem->GetTextStyle()));
@@ -383,9 +384,9 @@ void DlgTextEdit::RefreshControls()
       if (ui->BrushTypeCombo->itemData(i).toInt() == CurrentTextItem->BackgroundBrush->BrushType) 
          ui->BrushTypeCombo->setCurrentIndex(i);
    ui->PatternBrushCombo->SetCurrentBrush(CurrentTextItem->BackgroundBrush);
-   ui->FirstColorCombo->SetCurrentColor(CurrentTextItem->BackgroundBrush->ColorD);
-   ui->IntermColorCombo->SetCurrentColor(CurrentTextItem->BackgroundBrush->ColorIntermed);
-   ui->FinalColorCombo->SetCurrentColor(CurrentTextItem->BackgroundBrush->ColorF);
+   ui->FirstColorCombo->setCurrentColor(CurrentTextItem->BackgroundBrush->ColorD);
+   ui->IntermColorCombo->setCurrentColor(CurrentTextItem->BackgroundBrush->ColorIntermed);
+   ui->FinalColorCombo->setCurrentColor(CurrentTextItem->BackgroundBrush->ColorF);
    ui->OrientationCombo->SetCurrentBrush(CurrentTextItem->BackgroundBrush);
    //ui->FirstColorCombo->SetCurrentColor(CurrentTextItem->BackgroundBrush->ColorD);
 
@@ -895,7 +896,7 @@ void DlgTextEdit::s_ChIndexFontColorCombo(int)
       return;
    AppendPartialUndo(UNDOACTION_FONTCOLOR, ui->TextEdit, false);
 
-   CurrentTextItem->tParams.FontColor = ui->FontColorCombo->GetCurrentColor();
+   CurrentTextItem->tParams.FontColor = ui->FontColorCombo->currentColor();
 
    QTextCursor     Cursor(ui->TextEdit->textCursor());
    QTextCharFormat TCF;
@@ -920,7 +921,7 @@ void DlgTextEdit::s_ChIndexFontShadowColorCombo(int) {
     if (StopMAJSpinbox) return;
     AppendPartialUndo(UNDOACTION_FONTSHADOWCOLOR,ui->TextEdit,false);
 
-    CurrentTextItem->tParams.FontShadowColor = ui->StyleShadowColorCombo->GetCurrentColor();
+    CurrentTextItem->tParams.FontShadowColor = ui->StyleShadowColorCombo->currentColor();
     RefreshControls();
 }
 
@@ -979,7 +980,7 @@ void DlgTextEdit::s_ChIndexGradientFirstColorCombo(int index)
    if (StopMAJSpinbox) return;
    AppendPartialUndo(UNDOACTION_BRUSHFIRSTCOLOR, ui->TextEdit, false);
 
-   CurrentTextItem->BackgroundBrush->ColorD = ui->FirstColorCombo->GetCurrentColor();
+   CurrentTextItem->BackgroundBrush->ColorD = ui->FirstColorCombo->currentColor();
    RefreshControls();
 }
 
@@ -990,7 +991,7 @@ void DlgTextEdit::s_ChIndexGradientFinalColorCombo(int)
    if (StopMAJSpinbox) return;
    AppendPartialUndo(UNDOACTION_BRUSHFINALCOLOR, ui->TextEdit, false);
 
-   CurrentTextItem->BackgroundBrush->ColorF = ui->FinalColorCombo->GetCurrentColor();
+   CurrentTextItem->BackgroundBrush->ColorF = ui->FinalColorCombo->currentColor();
    RefreshControls();
 }
 
@@ -1001,7 +1002,7 @@ void DlgTextEdit::s_ChIndexGradientIntermColorCombo(int)
    if (StopMAJSpinbox) return;
    AppendPartialUndo(UNDOACTION_BRUSHINTERMCOLOR, ui->TextEdit, false);
 
-   CurrentTextItem->BackgroundBrush->ColorIntermed = ui->IntermColorCombo->GetCurrentColor();
+   CurrentTextItem->BackgroundBrush->ColorIntermed = ui->IntermColorCombo->currentColor();
    RefreshControls();
 }
 

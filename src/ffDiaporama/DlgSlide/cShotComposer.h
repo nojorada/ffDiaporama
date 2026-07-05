@@ -1,4 +1,4 @@
-/* ======================================================================
+﻿/* ======================================================================
     This file is part of ffDiaporama
     ffDiaporama is a tool to make diaporama as video
     Copyright (C) 2011-2014 Dominique Levray <domledom@laposte.net>
@@ -204,6 +204,7 @@ protected:
 #define GETSPINBOX(WIDGETNAME)          findChild<QSpinBox *>(WIDGETNAME)
 #define GETSLIDER(WIDGETNAME)           findChild<QSlider *>(WIDGETNAME)
 #define GETCOMBOBOX(WIDGETNAME)         findChild<QComboBox *>(WIDGETNAME)
+#define GETCOLORCOMBOBOX(WIDGETNAME)    findChild<ColorComboBox *>(WIDGETNAME)
 #define GETBUTTON(WIDGETNAME)           findChild<QToolButton *>(WIDGETNAME)
 #define GETCHECKBOX(WIDGETNAME)         findChild<QCheckBox *>(WIDGETNAME)
 

@@ -181,9 +181,9 @@ void DlgBackgroundProperties::RefreshControls()
       for (int i = 0; i < ui->BrushTypeCombo->count(); i++) 
          if (ui->BrushTypeCombo->itemData(i).toInt() == BackgroundBrush->BrushType) 
             ui->BrushTypeCombo->setCurrentIndex(i);
-      ui->FirstColorCombo->SetCurrentColor(&BackgroundBrush->ColorD);
-      ui->FinalColorCombo->SetCurrentColor(&BackgroundBrush->ColorF);
-      ui->IntermColorCombo->SetCurrentColor(&BackgroundBrush->ColorIntermed);
+      ui->FirstColorCombo->setCurrentColor(BackgroundBrush->ColorD);
+      ui->FinalColorCombo->setCurrentColor(BackgroundBrush->ColorF);
+      ui->IntermColorCombo->setCurrentColor(BackgroundBrush->ColorIntermed);
       ui->OrientationCombo->SetCurrentBrush(BackgroundBrush);
       ui->BackgroundCombo->SetCurrentBackground(BackgroundBrush->BrushImage);
       ui->IntermPosSlider->setValue(BackgroundBrush->Intermediate*100);
@@ -379,7 +379,7 @@ void DlgBackgroundProperties::s_ChIndexGradientFirstColorCombo(int) {
     ToLog(LOGMSG_DEBUGTRACE,"IN:DlgBackgroundProperties::s_ChIndexGradientFirstColorCombo");
     if (StopMAJSpinbox) return;
     AppendPartialUndo(UNDOACTION_FIRSTCOLOR,ui->FirstColorCombo,false);
-    DiaporamaObject->BackgroundBrush->ColorD=ui->FirstColorCombo->GetCurrentColor();
+    DiaporamaObject->BackgroundBrush->ColorD=ui->FirstColorCombo->currentColor();
     RefreshControls();
 }
 
@@ -388,7 +388,7 @@ void DlgBackgroundProperties::s_ChIndexGradientFinalColorCombo(int) {
     ToLog(LOGMSG_DEBUGTRACE,"IN:DlgBackgroundProperties::s_ChIndexGradientFinalColorCombo");
     if (StopMAJSpinbox) return;
     AppendPartialUndo(UNDOACTION_LASTCOLOR,ui->FinalColorCombo,false);
-    DiaporamaObject->BackgroundBrush->ColorF=ui->FinalColorCombo->GetCurrentColor();
+    DiaporamaObject->BackgroundBrush->ColorF=ui->FinalColorCombo->currentColor();
     RefreshControls();
 }
 
@@ -397,7 +397,7 @@ void DlgBackgroundProperties::s_ChIndexGradientIntermColorCombo(int) {
     ToLog(LOGMSG_DEBUGTRACE,"IN:DlgBackgroundProperties::s_ChIndexGradientIntermColorCombo");
     if (StopMAJSpinbox) return;
     AppendPartialUndo(UNDOACTION_INTERMCOLOR,ui->IntermColorCombo,false);
-    DiaporamaObject->BackgroundBrush->ColorIntermed=ui->IntermColorCombo->GetCurrentColor();
+    DiaporamaObject->BackgroundBrush->ColorIntermed=ui->IntermColorCombo->currentColor();
     RefreshControls();
 }
 

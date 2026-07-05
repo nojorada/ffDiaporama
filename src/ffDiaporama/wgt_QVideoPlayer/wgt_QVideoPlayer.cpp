@@ -1,4 +1,4 @@
-/* ======================================================================
+﻿/* ======================================================================
     This file is part of ffDiaporama
     ffDiaporama is a tool to make diaporama as video
     Copyright (C) 2011-2014 Dominique Levray <domledom@laposte.net>
@@ -139,8 +139,8 @@ wgt_QVideoPlayer::~wgt_QVideoPlayer()
 #if QT_VERSION >= 0x060000
    if (m_audioOutput->state() == QAudio::SuspendedState)
    {
-      m_audioOutput->reset();
-      m_audioOutput->stop();
+       m_audioOutput->stop();
+       m_audioOutput->reset();
    }
    if (m_audioOutput->state() != QAudio::StoppedState)
       m_audioOutput->stop();
@@ -282,7 +282,7 @@ void wgt_QVideoPlayer::SetAudioFPS()
    MixedMusic.SetFPS(double(1000)/ApplicationConfig->PreviewFPS,2,ApplicationConfig->PreviewSamplingRate,AV_SAMPLE_FMT_S16);
    Music.SetFPS(MixedMusic.WantedDuration,MixedMusic.Channels,MixedMusic.SamplingRate,MixedMusic.SampleFormat);
    if(!m_audioOutput.isNull())
-      m_audioOutput->reset();
+      m_audioOutput->stop();
    //delete audio_outputStream;
 
    setAudioOutput();
@@ -322,7 +322,7 @@ void wgt_QVideoPlayer::setAudioOutput()
 
    const QAudioDevice& defaultDeviceInfo = m_devices->defaultAudioOutput();
    //QAudioDevice deviceInfo = m_devices->defaultAudioOutput();
-   m_audioOutput.reset(new QAudioSink(defaultDeviceInfo, format));
+       m_audioOutput.reset(new QAudioSink(defaultDeviceInfo, format));
    m_audioOutput->setBufferSize(MixedMusic.NbrPacketForFPS * MixedMusic.SoundPacketSize * BUFFERING_NBR_AUDIO_FRAME);
    audio_outputDevice = m_audioOutput->start();
    m_audioOutput->suspend();

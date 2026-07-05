@@ -1,4 +1,4 @@
-// changed by gerd
+﻿// changed by gerd
 /* ======================================================================
     This file is part of ffDiaporama
     ffDiaporama is a tool to make diaporama as video
@@ -120,7 +120,7 @@ int diaporama_main(int argc, char* argv[])
    int     zero = 1;
    char    *WM_NAME[] = { (char *)APPLICATION_NAME };
    //QApplication::setAttribute(Qt::AA_DisableHighDpiScaling);
-   QApplication app(zero, WM_NAME);
+   QApplication app(argc, argv);
    QTranslator qtTranslator;
    if (qtTranslator.load(QLocale::system(),
                "qt", "_",

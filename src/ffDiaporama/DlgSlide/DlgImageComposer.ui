@@ -152,7 +152,7 @@ text</string>
              <string>Ctrl+Ins</string>
             </property>
             <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
+             <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
             </property>
            </widget>
           </item>
@@ -198,14 +198,14 @@ file</string>
              <string>Ins</string>
             </property>
             <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
+             <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
             </property>
            </widget>
           </item>
           <item>
            <widget class="Line" name="line_6">
             <property name="orientation">
-             <enum>Qt::Vertical</enum>
+             <enum>Qt::Orientation::Vertical</enum>
             </property>
            </widget>
           </item>
@@ -246,7 +246,7 @@ block</string>
              </size>
             </property>
             <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
+             <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
             </property>
            </widget>
           </item>
@@ -287,7 +287,7 @@ block</string>
              </size>
             </property>
             <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
+             <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
             </property>
            </widget>
           </item>
@@ -328,14 +328,14 @@ information</string>
              </size>
             </property>
             <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
+             <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
             </property>
            </widget>
           </item>
           <item>
            <widget class="Line" name="line_7">
             <property name="orientation">
-             <enum>Qt::Vertical</enum>
+             <enum>Qt::Orientation::Vertical</enum>
             </property>
            </widget>
           </item>
@@ -375,14 +375,14 @@ information</string>
              </size>
             </property>
             <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
+             <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
             </property>
            </widget>
           </item>
           <item>
            <spacer name="horizontalSpacer_8">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -440,7 +440,7 @@ information</string>
            </sizepolicy>
           </property>
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
           <widget class="QWidget" name="widget_4" native="true">
            <property name="sizePolicy">
@@ -483,13 +483,13 @@ information</string>
                <number>1</number>
               </property>
               <property name="verticalScrollBarPolicy">
-               <enum>Qt::ScrollBarAlwaysOn</enum>
+               <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
               </property>
               <property name="horizontalScrollBarPolicy">
-               <enum>Qt::ScrollBarAlwaysOff</enum>
+               <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
               </property>
               <property name="editTriggers">
-               <set>QAbstractItemView::NoEditTriggers</set>
+               <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
               </property>
               <property name="showDropIndicator" stdset="0">
                <bool>true</bool>
@@ -501,16 +501,16 @@ information</string>
                <bool>false</bool>
               </property>
               <property name="dragDropMode">
-               <enum>QAbstractItemView::DropOnly</enum>
+               <enum>QAbstractItemView::DragDropMode::DropOnly</enum>
               </property>
               <property name="defaultDropAction">
-               <enum>Qt::LinkAction</enum>
+               <enum>Qt::DropAction::LinkAction</enum>
               </property>
               <property name="selectionMode">
-               <enum>QAbstractItemView::ExtendedSelection</enum>
+               <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
               </property>
               <property name="selectionBehavior">
-               <enum>QAbstractItemView::SelectRows</enum>
+               <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
               </property>
               <property name="wordWrap">
                <bool>false</bool>
@@ -550,10 +550,10 @@ information</string>
             </font>
            </property>
            <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
+            <enum>QFrame::Shape::StyledPanel</enum>
            </property>
            <property name="frameShadow">
-            <enum>QFrame::Sunken</enum>
+            <enum>QFrame::Shadow::Sunken</enum>
            </property>
            <property name="lineWidth">
             <number>1</number>
@@ -562,10 +562,10 @@ information</string>
             <number>1</number>
            </property>
            <property name="verticalScrollBarPolicy">
-            <enum>Qt::ScrollBarAlwaysOn</enum>
+            <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
            </property>
            <property name="horizontalScrollBarPolicy">
-            <enum>Qt::ScrollBarAlwaysOff</enum>
+            <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -574,8 +574,8 @@ information</string>
             <property name="geometry">
              <rect>
               <x>0</x>
-              <y>0</y>
-              <width>273</width>
+              <y>-206</y>
+              <width>269</width>
               <height>484</height>
              </rect>
             </property>
@@ -637,7 +637,7 @@ information</string>
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/RotateY.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -677,7 +677,7 @@ information</string>
 This value is defined as a percentage (%) of the total width of the image or in pixels (for a 1080p screen) according to the unit defined in the configuration dialog box.</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -711,7 +711,7 @@ This value is defined as a percentage (%) of the total width of the image or in 
                   <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_Height.png</pixmap>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                  </property>
                 </widget>
                </item>
@@ -734,7 +734,7 @@ This value is defined as a percentage (%) of the total width of the image or in 
 This value is defined as a percentage (%) of the total height of the image or in pixels (for a 1080p screen) according to the unit defined in the configuration dialog.</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -790,7 +790,7 @@ This value is defined as a percentage (%) of the total height of the image or in
                   <number>180</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -812,7 +812,7 @@ This value is defined as a percentage (%) of the total height of the image or in
                   <string>Define the angle of rotation about the x-axis (expressed in degrees)</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="minimum">
                   <number>-180</number>
@@ -859,7 +859,7 @@ This value is defined as a percentage (%) of the total height of the image or in
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/RotateZ.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -925,7 +925,7 @@ color: #000000;
 This position is defined as a percentage (%) of the total width of the image or in pixels (for a 1080p screen) according to the unit defined in the configuration dialog.</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -959,7 +959,7 @@ This position is defined as a percentage (%) of the total width of the image or 
                   <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_Y.png</pixmap>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                  </property>
                 </widget>
                </item>
@@ -982,7 +982,7 @@ This position is defined as a percentage (%) of the total width of the image or 
 This position is defined as a percentage (%) of the total height of the image or in pixels (for a 1080p screen) according to the unit defined in the configuration dialog.</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -1009,7 +1009,7 @@ This position is defined as a percentage (%) of the total height of the image or
                 <string>Shape :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1025,7 +1025,7 @@ This position is defined as a percentage (%) of the total height of the image or
                 <string>Clip-Art :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1090,7 +1090,7 @@ Remark: the position of the shadow is independent of rotation of the block: the 
                    <normaloff>:/img/db_menu.png</normaloff>:/img/db_menu.png</iconset>
                  </property>
                  <property name="arrowType">
-                  <enum>Qt::NoArrow</enum>
+                  <enum>Qt::ArrowType::NoArrow</enum>
                  </property>
                 </widget>
                </item>
@@ -1137,7 +1137,7 @@ Remark: the position of the shadow is independent of rotation of the block: the 
                   <number>180</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -1159,7 +1159,7 @@ Remark: the position of the shadow is independent of rotation of the block: the 
                   <string>Define the angle of rotation about the y-axis (expressed in degrees)</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="minimum">
                   <number>-180</number>
@@ -1203,7 +1203,7 @@ Remark: the position of the shadow is independent of rotation of the block: the 
                 <string>Border :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1245,12 +1245,12 @@ Remark: This value is defined as 1/1080 of the height of the screen.
 A value of 10 corresponds to 10 points on a 1920×1080 FullHD screen, but only to 6 points on a 1280×720 screen.</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="cColorComboBox" name="PenColorCB">
+                <widget class="ColorComboBox" name="PenColorCB">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -1313,7 +1313,7 @@ color: #000000;
                 <string>Shadow :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1329,7 +1329,7 @@ color: #000000;
                 <string>Opacity :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1348,7 +1348,7 @@ color: #000000;
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/RotateX.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1361,7 +1361,7 @@ color: #000000;
                 </font>
                </property>
                <property name="orientation">
-                <enum>Qt::Vertical</enum>
+                <enum>Qt::Orientation::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1427,7 +1427,7 @@ color: #000000;
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_X.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1466,12 +1466,12 @@ color: #000000;
                   <string>Define the distance between the block and its shadow</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="cCColorComboBox" name="ShadowColorCB">
+                <widget class="ColorComboBox" name="ShadowColorCB">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -1551,7 +1551,7 @@ color: #000000;
                   <number>180</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -1573,7 +1573,7 @@ color: #000000;
                   <string>Define the angle of rotation about the z-axis (expressed in degrees)</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="minimum">
                   <number>-180</number>
@@ -1657,7 +1657,7 @@ color: #000000;
                 <pixmap resource="../RSCffDiaporama.qrc">:/img/PosSize_Width.png</pixmap>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1667,7 +1667,6 @@ color: #000000;
                 <font>
                  <family>Tahoma</family>
                  <pointsize>9</pointsize>
-                 <weight>50</weight>
                  <italic>true</italic>
                  <bold>false</bold>
                  <underline>true</underline>
@@ -1677,7 +1676,7 @@ color: #000000;
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;Block shape :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
                </property>
               </widget>
              </item>
@@ -1729,7 +1728,7 @@ Remark: To make animations of text, you have to create at least 2 shots then:
                   <number>100</number>
                  </property>
                  <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                 </widget>
                </item>
@@ -1755,7 +1754,7 @@ Remark: To make animations of text, you have to create at least 2 shots then:
 -Define different values for zoom and scrolling for the 2nd</string>
                  </property>
                  <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::PlusMinus</enum>
+                  <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
                  </property>
                  <property name="suffix">
                   <string notr="true">%</string>
@@ -1802,7 +1801,6 @@ Remark: To make animations of text, you have to create at least 2 shots then:
                 <font>
                  <family>Tahoma</family>
                  <pointsize>9</pointsize>
-                 <weight>50</weight>
                  <italic>true</italic>
                  <bold>false</bold>
                  <underline>true</underline>
@@ -1812,7 +1810,7 @@ Remark: To make animations of text, you have to create at least 2 shots then:
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;Text option :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft</set>
                </property>
               </widget>
              </item>
@@ -1828,7 +1826,7 @@ Remark: To make animations of text, you have to create at least 2 shots then:
                 <string>Zoom :</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1852,7 +1850,7 @@ Remark: To make animations of text, you have to create at least 2 shots then:
    <item>
     <widget class="Line" name="line">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -1864,7 +1862,7 @@ Remark: To make animations of text, you have to create at least 2 shots then:
      <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -2249,11 +2247,6 @@ Remark: To make animations of text, you have to create at least 2 shots then:
  </widget>
  <customwidgets>
   <customwidget>
-   <class>cCColorComboBox</class>
-   <extends>QComboBox</extends>
-   <header>../ffDiaporama_lib/cColorComboBox.h</header>
-  </customwidget>
-  <customwidget>
    <class>cCShapeComboBox</class>
    <extends>QComboBox</extends>
    <header>CustomCtrl/cCShapeComboBox.h</header>
@@ -2275,9 +2268,9 @@ Remark: To make animations of text, you have to create at least 2 shots then:
    <header>../ffDiaporama_lib/cTexteFrameComboBox.h</header>
   </customwidget>
   <customwidget>
-   <class>cColorComboBox</class>
+   <class>ColorComboBox</class>
    <extends>QComboBox</extends>
-   <header>../ffDiaporama_lib/cColorComboBox.h</header>
+   <header>colorcombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources>

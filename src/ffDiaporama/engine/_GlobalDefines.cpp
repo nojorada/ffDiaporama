@@ -1,4 +1,4 @@
-/* ======================================================================
+﻿/* ======================================================================
     This file is part of ffDiaporama
     ffDiaporama is a tool to make diaporama as video
     Copyright (C) 2011-2014 Dominique Levray <domledom@laposte.net>
@@ -464,10 +464,12 @@ void repairFonts(QString& ffdPart)
 
 void repairFontsWindows(QString& ffdPart)
 {
+    bool showFontDebug = false;
    // on windows replace Serif with Times New Roman and Sans Serif with Tahoma
    // also fix font-families with more than one font
    QSettings settings("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\FontSubstitutes", QSettings::NativeFormat);
-   qDebug() << settings.value("MS Shell Dlg 2").toString().trimmed();
+   if(showFontDebug)
+       qDebug() << settings.value("MS Shell Dlg 2").toString().trimmed();
    QStringList availableFonts = QFontDatabase().families();
    //QFont* font;
    int startIndex = -1;
@@ -479,14 +481,16 @@ void repairFontsWindows(QString& ffdPart)
    while (startIndex > 0)
    {
       endIndex = ffdPart.indexOf(";", startIndex);
-      qDebug() << ffdPart.mid(startIndex, endIndex - startIndex);
+      if(showFontDebug)
+          qDebug() << ffdPart.mid(startIndex, endIndex - startIndex);
       QString fonts = ffdPart.mid(startIndex, endIndex - startIndex);
       QStringList l = fonts.split("'", Qt::SkipEmptyParts);
-      qDebug() << l << " (" << l.last() << ")";
+      if(showFontDebug)
+          qDebug() << l << " (" << l.last() << ")";
       QString fontToUse = l.last();
       if (l.count() > 3 || !availableFonts.contains(fontToUse))
          needRepl = true;
-      if (availableFonts.contains(fontToUse))
+      if (showFontDebug && availableFonts.contains(fontToUse))
          qDebug() << "font is in Database";
       if (needRepl)
       {
@@ -507,7 +511,8 @@ void repairFontsWindows(QString& ffdPart)
 
 void repairFontsLinux(QString& ffdPart)
 {
-   // on linux replace Tahoma with Sans Serif and Times New Roman with Serif 
+    bool showFontDebug = false;
+    // on linux replace Tahoma with Sans Serif and Times New Roman with Serif 
    // also fix font-families with more than one font
    QStringList availableFonts = QFontDatabase().families();
    //QFont* font;
@@ -520,14 +525,16 @@ void repairFontsLinux(QString& ffdPart)
    while (startIndex > 0)
    {
       endIndex = ffdPart.indexOf(";", startIndex);
-      qDebug() << ffdPart.mid(startIndex, endIndex - startIndex);
+      if(showFontDebug)
+          qDebug() << ffdPart.mid(startIndex, endIndex - startIndex);
       QString fonts = ffdPart.mid(startIndex, endIndex - startIndex);
       QStringList l = fonts.split("'", Qt::SkipEmptyParts);
-      qDebug() << l << " (" << l.last() << ")";
+      if(showFontDebug)
+          qDebug() << l << " (" << l.last() << ")";
       QString fontToUse = l.last();
       if (l.count() > 3 || !availableFonts.contains(fontToUse))
          needRepl = true;
-      if (availableFonts.contains(fontToUse))
+      if (showFontDebug && availableFonts.contains(fontToUse))
          qDebug() << "font is in Database";
       if (needRepl)
       {
