@@ -1260,7 +1260,8 @@ int cVideoFile::cudaFilter_Open()
       return result;
    }
    
-   result = av_opt_set_int_list(VideoFilterIn, "pix_fmts", pix_fmts,AV_PIX_FMT_NONE, AV_OPT_SEARCH_CHILDREN);
+//   result = av_opt_set_int_list(VideoFilterIn, "pix_fmts", pix_fmts,AV_PIX_FMT_NONE, AV_OPT_SEARCH_CHILDREN);
+   result = av_opt_set_array(VideoFilterIn, "pix_fmts", AV_OPT_SEARCH_CHILDREN, 0, 3, AV_OPT_TYPE_PIXEL_FMT, pix_fmts);
    if (result < 0) {
       //av_log(NULL, AV_LOG_ERROR, "Cannot set output pixel format\n");
       ToLog(LOGMSG_CRITICAL, QString("Cannot set output pixel format"));
@@ -1276,7 +1277,8 @@ int cVideoFile::cudaFilter_Open()
       ToLog(LOGMSG_CRITICAL, QString("Error in cVideoFile::VideoFilter_Open : avfilter_graph_create_filter: out"));
       return result;
    }
-   result = av_opt_set_int_list(VideoFilterOut, "pix_fmts", pix_fmts,AV_PIX_FMT_NONE, AV_OPT_SEARCH_CHILDREN);
+//   result = av_opt_set_int_list(VideoFilterOut, "pix_fmts", pix_fmts,AV_PIX_FMT_NONE, AV_OPT_SEARCH_CHILDREN);
+   result = av_opt_set_array(VideoFilterOut, "pix_fmts", AV_OPT_SEARCH_CHILDREN, 0, 3, AV_OPT_TYPE_PIXEL_FMT, pix_fmts);
    if (result < 0) {
       //av_log(NULL, AV_LOG_ERROR, "Cannot set output pixel format\n");
       ToLog(LOGMSG_CRITICAL, QString("Cannot set output pixel format"));
